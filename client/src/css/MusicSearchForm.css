@@ -1,0 +1,60 @@
+.MusicSearchForm {
+   padding-top: 20px;
+   padding-bottom: 30px;
+}
+.MusicSearch-title {
+   padding-bottom: 20px;
+}
+
+.MusicSearchForm .btn {
+   background-color: #ff2525;
+}
+select.form-control.genre-select{
+   height: 300px;
+}
+.genre-col{
+   margin-bottom: 50px;
+   padding-right: 30px;
+   border-right: 1px solid #444;
+}
+.features{
+   margin: 0 auto;
+   padding-bottom: 20px;
+}
+.features-heading{
+   margin: 0;
+}
+.description{ 
+   font-size: 0.8em;
+   margin: 0;
+}
+
+.help{
+   margin-left: 8px;
+   color: #fcfa81;
+}
+.help:hover{
+   cursor: pointer;
+   color: #ff2525;
+}
+.form-group {
+   padding: 0 10px 20px 10px;
+   margin-right: 10px;
+}
+.form-group label {
+   font-weight: 500;
+}
+.form-group output {
+   color: #666;
+}
+.form-check-input:hover{
+   cursor: pointer;
+}
+
+.MusicSearchForm .rc-slider-disabled {
+   background-color: #444;
+}
+.MusicSearchForm .rc-slider-disabled .rc-slider-rail{
+   background-color: #666;
+}
+

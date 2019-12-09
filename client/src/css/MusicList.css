@@ -1,0 +1,50 @@
+.MusicList {
+   margin: 20px 10px;
+}
+
+.MusicList .save-playlist-btn{
+   background-color: #ff2525;
+   padding: 5px 10px;
+   margin: 10px 0;
+}
+
+.MusicList .save-playlist-btn:hover{
+   background-color: #666;
+   padding: 5px 10px;
+}
+
+.MusicList .search-link{
+   font-size: 0.8em;
+   color: #fcfa81;
+}
+
+.MusicList .search-link:hover{
+   text-decoration: none;
+   color: #666;
+}
+
+.album-cover {
+   float: left;
+}
+
+.card-stack {
+   justify-content: center;
+}
+
+.card-header {
+   height: 70px;
+   text-align: left;
+   padding: 0;
+   margin-left: 3px;
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid #555;
+}
+.card-header:hover {
+color: white;
+}
+
+.album-cover {
+   margin-right: 20px;
+}
+
