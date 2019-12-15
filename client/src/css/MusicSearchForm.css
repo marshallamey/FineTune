@@ -1,16 +1,18 @@
-.MusicSearchForm {
-   padding-top: 20px;
-   padding-bottom: 30px;
-}
-.MusicSearch-title {
-   padding-bottom: 20px;
-}
+.music-search-form { padding: 20px; }
 
-.MusicSearchForm .btn {
-   background-color: #ff2525;
-}
 select.form-control.genre-select{
    height: 300px;
+}
+.basic-search-form {
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+.search-input {
+   margin: 20px auto;
+   width: 50%;
+}
+.search-btn {
+
 }
 .genre-col{
    margin-bottom: 50px;

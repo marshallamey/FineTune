@@ -97,12 +97,12 @@ padding: 10px;
 .btn-row{
    align-items: center;
 }
-.save-btn{
+.track-btn{
    background-color: transparent;
    border: none;
    padding: 0;
 }
-.save-btn:hover{
+.track-btn:hover{
    background-color: transparent;
    border: none;
    padding: 0;
