@@ -131,15 +131,18 @@ app.get('/refresh_token', (req, res) => {
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production asset FILES (e.g., main.js, main.css)
-  app.use(express.static('client/build'));
+  app.use(express.static('../client/build'));
 
   // OR Express will serve up index.html ROUTES unrecognized
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
   });
 }
 
-const PORT = process.env.PORT || 8888;
-// console.log(`FineTune server started: Listening on ${  PORT}`);
+const PORT = process.env.NODE_PORT || 8888;
+console.log(`FineTune server started: Listening on ${  PORT}`);
+console.log(`${process.env.NODE_ENV}`);
+console.log(`${process.env.SPOTIFY_REDIRECT_URI}`);
+console.log(`${keys.spotifyRedirectURI}`);
 app.listen(PORT);
 /* eslint-enable */

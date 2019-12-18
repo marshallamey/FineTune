@@ -42,7 +42,7 @@ class App extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("FINETUNEAPP(App):: COMPONENT UPDATED");
+        console.log("FINETUNEAPP(App):: APP UPDATED");
     }
 
     render() {

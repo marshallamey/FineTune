@@ -1,4 +1,8 @@
-node_modules
-build
+client/node_modules
+client/build
 client/src/setupProxy.js
-config/dev.js
+
+server/node_modules
+server/config/dev.js
+server/config/prod.env
+server/finetune.config.js

@@ -94,28 +94,6 @@ padding: 10px;
    padding: 4px;
    margin-top: 10px;
 }
-.btn-row{
-   align-items: center;
-}
-.track-btn{
-   background-color: transparent;
-   border: none;
-   padding: 0;
-}
-.track-btn:hover{
-   background-color: transparent;
-   border: none;
-   padding: 0;
-}
-.fas{
-   padding: 3px 5px 0 0;
-   color: #fcfa81;
-}
-.fas:hover{
-   color: #d6d312;
-   font-size: 1.2em;
-   cursor: pointer;
-}
 
 
 .Login{

@@ -1,38 +1,37 @@
-.MusicList {
+.music-list {
    margin: 20px 10px;
 }
 
-.MusicList .save-playlist-btn{
+.music-list .music-list-save-btn {
    background-color: #ff2525;
+   display: block;
    padding: 5px 10px;
-   margin: 10px 0;
+   margin: 10px auto;
 }
 
-.MusicList .save-playlist-btn:hover{
+.music-list .music-list-save-btn:hover {
    background-color: #666;
    padding: 5px 10px;
 }
 
-.MusicList .search-link{
+.music-list .new-search-link {
    font-size: 0.8em;
    color: #fcfa81;
+   padding-bottom: 20px;
 }
 
-.MusicList .search-link:hover{
+.music-list .new-search-link:hover {
    text-decoration: none;
    color: #666;
 }
 
-.album-cover {
-   float: left;
-}
 
 .card-stack {
    width: 80%;
-   margin: 0 auto;
+   margin: 20px auto;
 }
 
-.card-header {
+.song-card-header {
    height: 70px;
    text-align: left;
    padding: 0;
@@ -45,11 +44,35 @@
    border-right: 2px solid #fff;
    border-radius: 0;
 }
-.card-header:hover {
+.song-card-header:hover {
 color: white;
 }
 
-.album-cover {
+.song-album-cover {
+   float: left;
    margin-right: 20px;
+}
+
+.song-btn-row{
+   align-items: center;
+}
+.song-btn{
+   background-color: transparent;
+   border: none;
+   padding: 0;
+}
+.song-btn:hover{
+   background-color: transparent;
+   border: none;
+   padding: 0;
+}
+.fas{
+   padding: 3px 5px 0 0;
+   color: #fcfa81;
+}
+.fas:hover{
+   color: #d6d312;
+   font-size: 1.2em;
+   cursor: pointer;
 }
 

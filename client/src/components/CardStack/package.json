@@ -1,0 +1,84 @@
+{
+  "_args": [
+    [
+      "react-cardstack@1.1.0",
+      "/Users/marshallamey/bin/finetune/client"
+    ]
+  ],
+  "_from": "react-cardstack@1.1.0",
+  "_id": "react-cardstack@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-z7j6YZ+7ZO3ncJOtgTu3yrF41qlOeyrW1YbGwYbpOL8QxLlRGmDHPYo65+MToYIBmG5yGETzHOExm9Kp4GKKnA==",
+  "_location": "/react-cardstack",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-cardstack@1.1.0",
+    "name": "react-cardstack",
+    "escapedName": "react-cardstack",
+    "rawSpec": "1.1.0",
+    "saveSpec": null,
+    "fetchSpec": "1.1.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-cardstack/-/react-cardstack-1.1.0.tgz",
+  "_spec": "1.1.0",
+  "_where": "/Users/marshallamey/bin/finetune/client",
+  "author": {
+    "name": "Cameron Bourke",
+    "email": "cameron2295@gmail.com",
+    "url": "http://cameronbourke.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/cameronbourke/cardstack/issues"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.7"
+  },
+  "description": "react component inspired by the iOS passbook app UI",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "babel-loader": "8.0.0-beta.0",
+    "react": "15.3.0",
+    "react-dom": "15.3.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/cameronbourke/cardstack#readme",
+  "keywords": [
+    "react",
+    "react-component",
+    "carousel",
+    "navigation",
+    "cards",
+    "panels"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "react-cardstack",
+  "peerDependencies": {
+    "react": ">=15.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameronbourke/cardstack.git"
+  },
+  "scripts": {
+    "build:all": "yarn run build:compile && yarn run build:umd && yarn run build:example",
+    "build:compile": "babel src --out-dir dist",
+    "build:example": "webpack --config ./example/webpack.config.js --progress --colors",
+    "build:umd": "webpack",
+    "start": "webpack-dev-server --content-base example/"
+  },
+  "version": "1.1.0"
+}

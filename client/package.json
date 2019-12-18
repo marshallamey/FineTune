@@ -16,7 +16,6 @@
     "prop-types": "^15.6.2",
     "rc-slider": "^8.6.1",
     "react": "^16.4.1",
-    "react-cardstack": "^1.1.0",
     "react-d3-basic": "^1.6.11",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.4.1",
