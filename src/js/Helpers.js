@@ -11,7 +11,7 @@ const spotifyApi = new SpotifyWebApi();
 ** If a user has signed in to spotify, they will be available
 ** Function returns tokens if available, returns false otherwise
 **************************************************************************** */
-export const AuthServerURL = "http://ec2-44-230-239-150.us-west-2.compute.amazonaws.com"
+export const AuthServerURL = "http://ec2-44-229-197-205.us-west-2.compute.amazonaws.com"
 export const areTokensAvailable = (props) => {
   const tokens = {};
   let e; const r = /([^&;=]+)=?([^&;]*)/g;
