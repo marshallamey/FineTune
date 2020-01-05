@@ -27,6 +27,7 @@
 
 
 .card-stack {
+   min-width: 350px; 
    width: 80%;
    margin: 20px auto;
 }
@@ -48,12 +49,24 @@
 color: white;
 }
 
+.song-album-cover-col {
+    padding-left: 2px;
+ }
 .song-album-cover {
    float: left;
    margin-right: 20px;
 }
 
-.song-title-col {
+.song-title {
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+.song-info-col { padding: 0; }
+.song-btns {
+    padding: 0;
     text-align: center;
 }
+
 

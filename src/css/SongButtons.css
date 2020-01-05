@@ -1,6 +1,9 @@
 .song-btn-row{
     align-items: center;
  }
+ .song-btn-col{
+    padding: 0;
+ }
  .song-btn{
     background-color: transparent;
     border: none;

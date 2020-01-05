@@ -43,6 +43,7 @@ const MusicList = (props) => {
     // Create Song components with array returned from Spotify music search.
     const tracks = songs.map((song, index) => (
         <Card background="#333333" key={index}>
+
             {/* HEADER CONTENT GOES HERE */}
             <Row className="song-card-header">
 
@@ -56,15 +57,14 @@ const MusicList = (props) => {
                         // onClick={() => props.playSong(props, song)}
                     />
                 </Col>
-
-                <Col className="song-info-col" lg="10" md="9" xs="10">
-                    <Row className="song-title-row">
-                        {/* SONG TITLE */}
-                        <Col className="song-title-col" lg="9" md="8" xs="12">
+                
+                {/* SONG TITLE & BUTTONS */}
+                <Col className="song-info-col" lg="10" md="10" xs="10">
+                    <Row className="song-info-row">                      
+                        <Col className="song-title" lg="9" md="8" xs="12">
                             {song.name}{' - '}{song.artists[0].name}
                         </Col>
-                        {/* SONG BUTTONS */}
-                        <Col className="song-btn-col" lg="3" md="4" xs="12">
+                        <Col className="song-btns" lg="3" md="4" xs="12">
                             <SongButtons song={song} />
                         </Col>
                     </Row>
@@ -80,12 +80,11 @@ const MusicList = (props) => {
                 playSong={playSong}
                 index={index}
             />
-
         </Card>
-  ));
+    ));
 
-  // Create array of song URIs to create a Spotify playlist
-  const songURIs = songs.map(song => song.uri);
+    // Create array of song URIs to create a Spotify playlist
+    const songURIs = songs.map(song => song.uri);
 
     // console.log('FINETUNEAPP(MusicSearchForm):: Song URIs to create playlist: ', songURIs);
     return (
@@ -105,7 +104,7 @@ const MusicList = (props) => {
             {/* NEW SEARCH LINK */}
             <Link className="new-search-link" to="/search">Start New Search</Link>
 
-           {/* PLAYLIST GOES HERE */} 
+            {/* PLAYLIST GOES HERE */} 
             <div className="card-stack">
                 <CardStack       
                     height={1400}
@@ -121,20 +120,20 @@ const MusicList = (props) => {
 };
 
 MusicList.propTypes = {
-  spotifyTokens: PropTypes.shape({
-    access_token: PropTypes.string,
-    refresh_token: PropTypes.string,
-  }).isRequired,
-  user: PropTypes.shape({}).isRequired,
-  songs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    spotifyTokens: PropTypes.shape({
+        access_token: PropTypes.string,
+        refresh_token: PropTypes.string,
+    }).isRequired,
+    user: PropTypes.shape({}).isRequired,
+    songs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 const mapStateToProps = state => ({
-  spotifyTokens: state.spotifyTokens,
-  songs: state.songs,
-  user: state.user,
-  devices: state.devices,
-  expireTime: state.expireTime,
+    spotifyTokens: state.spotifyTokens,
+    songs: state.songs,
+    user: state.user,
+    devices: state.devices,
+    expireTime: state.expireTime,
 });
 
 export default withRouter(connect(mapStateToProps, actions)(MusicList));
