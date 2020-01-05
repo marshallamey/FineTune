@@ -6,7 +6,7 @@ import {
 
 const spotifyApi = new SpotifyWebApi();
 
-export const AuthServerURL = "http://localhost:3001"
+export const AuthServerURL = "http://ec2-44-229-197-205.us-west-2.compute.amazonaws.com"
 
 /* areTokensAvailable()::
 ** Looks at the URL to find tokens from callback
