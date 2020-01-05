@@ -1,5 +1,3 @@
-"use strict";
-
 exports.__esModule = true;
 exports.default = void 0;
 
@@ -9,7 +7,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends() { var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
@@ -29,8 +27,7 @@ function (_React$Component) {
 
     _this = _React$Component.call(this, props) || this;
     var children = props.children,
-        height = props.height,
-        initialCard = props.initialCard;
+        height = props.height;
     var childrenLength = children.length || 1;
     var headerHeight = height / childrenLength;
     if (childrenLength <= 1) throw new Error(errorMessage);

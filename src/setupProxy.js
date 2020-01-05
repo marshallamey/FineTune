@@ -1,5 +1,5 @@
 const proxy = require('http-proxy-middleware')
-const keys = require()
+
 
 module.exports = function(app) {
     app.use(proxy('/login', { target: 'ec2-35-162-241-110.us-west-2.compute.amazonaws.com/spotify/login' }))

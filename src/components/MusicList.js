@@ -11,6 +11,7 @@ import {
 } from '../js/Helpers';
 import * as actions from '../actions';
 import Song from './Song';
+import SongButtons from './SongButtons';
 import '../css/MusicList.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-notifications/lib/notifications.css';
@@ -46,33 +47,27 @@ const MusicList = (props) => {
             <Row className="song-card-header">
 
                 {/* ALBUM COVER */}
-                <Col lg="2" md="3" xs="2">
+                <Col className="song-album-cover-col" lg="2" md="2" xs="2">
                     <Media
-                    object
-                    className="song-album-cover img-responsive"
-                    src={song.album.images[2].url ? song.album.images[2].url : 'https://res.cloudinary.com/skooliesocial/image/upload/v1532741147/users/admin-1532741148018.jpg'}
-                    alt="Album Cover"
-                    // onClick={() => props.playSong(props, song)}
+                        object
+                        className="song-album-cover img-responsive"
+                        src={song.album.images[2].url ? song.album.images[2].url : 'https://res.cloudinary.com/skooliesocial/image/upload/v1532741147/users/admin-1532741148018.jpg'}
+                        alt="Album Cover"
+                        // onClick={() => props.playSong(props, song)}
                     />
                 </Col>
 
-                {/* SONG TITLE */}
-                <Col lg="8" md="6" xs="8">
-                    {song.name}{' - '}{song.artists[0].name}
-                </Col>
-                
-                {/* SONG BUTTONS */}
-                <Col className="song-btn-row center" lg="2" md="3" xs="2">
-                    <Button className="song-btn" onClick={() => props.playTracks(props, [song.id])}>
-                    <i className="fas fa-play" />
-                    </Button>
-                    <Button className="song-btn" onClick={() => props.saveTracks(props, [song.id])}>
-                    <i className="fas fa-plus" />
-                    </Button>
-                    <Button className="song-btn" onClick={() => props.deleteTracks(props, [song.id])}>
-                    <i className="fas fa-trash-alt" />
-                    </Button>
-                    
+                <Col className="song-info-col" lg="10" md="9" xs="10">
+                    <Row className="song-title-row">
+                        {/* SONG TITLE */}
+                        <Col className="song-title-col" lg="9" md="8" xs="12">
+                            {song.name}{' - '}{song.artists[0].name}
+                        </Col>
+                        {/* SONG BUTTONS */}
+                        <Col className="song-btn-col" lg="3" md="4" xs="12">
+                            <SongButtons song={song} />
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 

@@ -53,26 +53,7 @@ color: white;
    margin-right: 20px;
 }
 
-.song-btn-row{
-   align-items: center;
-}
-.song-btn{
-   background-color: transparent;
-   border: none;
-   padding: 0;
-}
-.song-btn:hover{
-   background-color: transparent;
-   border: none;
-   padding: 0;
-}
-.fas{
-   padding: 3px 5px 0 0;
-   color: #fcfa81;
-}
-.fas:hover{
-   color: #d6d312;
-   font-size: 1.2em;
-   cursor: pointer;
+.song-title-col {
+    text-align: center;
 }
 

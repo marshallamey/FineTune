@@ -15,10 +15,8 @@ const Song = (props) => {
     return (
         <div className="Song">
             <Row className="song-row">
-
                 <Col className="BarChart-col">
-                    <BarChart song={song} features={song.audio_features} />
-                    
+                    <BarChart song={song} features={song.audio_features} />        
                 </Col>
             </Row>
 

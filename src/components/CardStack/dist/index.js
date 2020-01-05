@@ -1,5 +1,3 @@
-"use strict";
-
 exports.__esModule = true;
 
 var _Cardstack = _interopRequireDefault(require("./Cardstack"));
