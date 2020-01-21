@@ -28,10 +28,7 @@ class App extends React.Component {
         const { spotifyTokens } = this.props;
 
         // Check for existing tokens from Spotify, connect if available refresh if expired
-        let tokens;
-        if (!spotifyTokens.access_token) {
-            tokens = areTokensAvailable(this.props);
-        }
+        let tokens = areTokensAvailable(this.props);
         if (tokens) {
             connectToSpotify(this.props, tokens);
         }

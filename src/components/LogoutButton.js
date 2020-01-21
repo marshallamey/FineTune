@@ -12,7 +12,7 @@ export default function LogoutButton(props) {
         Logged in as
         { user.id == null ? '' : ` ${user.id}` }
       </p>
-      <a href={`${AuthServerURL}/spotify/logout`}>
+      <a href={`${AuthServerURL}/spotify/logout`} onClick={() => clear()}>
         <Button outline onClick={() => clear()}>
           <img className="spotify-logo" src="/img/spotify-logo.png" alt="spotify-logo.JPG" />
           Logout

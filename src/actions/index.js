@@ -1,5 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
+import {AuthServerURL} from '../js/Helpers.js';
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -92,20 +93,22 @@ export const getDevices = accessToken => async (dispatch) => {
 export const refreshTokens = spotifyTokens => async (dispatch) => {
   console.log('FINETUNEAPP(actions.refreshTokens)::  Attempting to refresh access token...');
   console.log('FINETUNEAPP(actions.refreshTokens):: Old Access Token ==> ', spotifyTokens.access_token);
-  console.log('FINETUNEAPP(actions.refreshTokens):: Refresh Tokens ==> ', spotifyTokens.refresh_token);
+  console.log('FINETUNEAPP(actions.refreshTokens):: Refresh Token ==> ', spotifyTokens.refresh_token);
   const newSpotifyTokens = await axios({
     method: 'GET',
-    url: '/refresh_token',
+    url: `${AuthServerURL}/spotify/refresh_token`,
     params: { refresh_token: spotifyTokens.refresh_token },
   })
     .then((res) => {
+        console.log("SUCCESS!! =>", res.data.access_token);
       const response = {
         access_token: res.data.access_token,
         refresh_token: spotifyTokens.refresh_token,
       };
       return response;
     })
-    .catch(() => {
+    .catch((err) => {
+        console.log("ERROR!! =>", err)
       const response = {
         access_token: spotifyTokens.access_token,
         refresh_token: spotifyTokens.refresh_token,

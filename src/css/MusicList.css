@@ -1,35 +1,37 @@
-.music-list {
-   margin: 20px 10px;
+.music-list-container {
+   margin: 20px auto;
+   padding: 0;
 }
 
-.music-list .music-list-save-btn {
+.music-list-save-btn {
    background-color: #ff2525;
    display: block;
    padding: 5px 10px;
    margin: 10px auto;
 }
 
-.music-list .music-list-save-btn:hover {
+.music-list-save-btn:hover {
    background-color: #666;
    padding: 5px 10px;
 }
 
-.music-list .new-search-link {
+.music-list-search-link {
    font-size: 0.8em;
    color: #fcfa81;
    padding-bottom: 20px;
 }
 
-.music-list .new-search-link:hover {
+.music-list-search-link:hover {
    text-decoration: none;
    color: #666;
 }
 
 
-.card-stack {
-   min-width: 350px; 
-   width: 80%;
-   margin: 20px auto;
+.music-list.row {
+    background: #333333;
+    min-width: 350px; 
+    width: 90%;
+    margin: 20px auto;
 }
 
 .song-card-header {
@@ -69,4 +71,7 @@ color: white;
     text-align: center;
 }
 
-
+.modal-title {
+    width: 100%;
+    text-align: center;
+}

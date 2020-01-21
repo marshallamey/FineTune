@@ -30,7 +30,7 @@ const spotifyApi = new SpotifyWebApi();
 class MusicSearchForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { searchType: "basic" };
+        this.state = { searchType: "advanced" };
     }
 
     componentDidMount() {

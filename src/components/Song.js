@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Row, Col,
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import BarChart from './BarChart/BarChart';
 import { millisToMinutesAndSeconds, convertKey } from '../js/Helpers';
 import '../css/Song.css';
