@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Row, Col } from 'reactstrap';
-import { playSong, saveSong } from '../js/Helpers.js';
+import { playSong, saveSong, deleteSong } from '../js/Helpers.js';
 import '../css/SongButtons.css';
 
 const SongButtons = (props) => {
