@@ -20,7 +20,7 @@ const spotifyApi = new SpotifyWebApi();
 const MusicList = (props) => {
     const { spotifyTokens, user, className } = props;
     const [modal, setModal] = useState(false);
-    const [selectedSong, selectSong] = useState(props.songs[0]);
+    const [selectedSong, selectSong] = useState(props.songs[0] || {name:"",artists:[{name:""}]});
     const toggle = (id = -1) => {
         setModal(!modal);
         if (id >= 0) { selectSong(props.songs[id]); }
