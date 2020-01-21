@@ -25,7 +25,8 @@ const MusicList = (props) => {
         setModal(!modal);
         if (id >= 0) { selectSong(props.songs[id]); }
     }
-
+    console.warn(selectedSong)
+    console.info(props.songs);
     // Redirect to login if no user
     if (!user.id) { return <Redirect to="/" />; }
 
