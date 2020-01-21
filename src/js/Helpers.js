@@ -283,18 +283,25 @@ export const createNewPlaylist = (props, songURIs) => {
 /* saveTracks()::
 ** Make a Spotify API request to save array of tracks to library
 *************************************************************************** */
-export const saveTracks = (props, songIds) => {
+export const saveSong = (props) => {
   // Redirect to home if access token expired
   if (props.spotifyTokens.access_token && isTokenExpired(props)) {
     console.log('START:: Getting new token');
     getNewToken(props);
   }
   spotifyApi.setAccessToken(props.spotifyTokens.access_token);
-  spotifyApi.addToMySavedTracks(songIds)
+  spotifyApi.addToMySavedTracks(props.song.id)
     .then(() => {
       trackSavedToast();
     });
 };
+
+/* deleteSong()::
+** Remove song from list
+*************************************************************************** */
+export const deleteSong = (props) => {
+    props.songs.splice(props.index,1);
+  };
 
 /* playSong()::
 ** Make a Spotify API request to play selected song

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Row, Col } from 'reactstrap';
-import { playSong } from '../js/Helpers.js';
+import { playSong, saveSong } from '../js/Helpers.js';
 import '../css/SongButtons.css';
 
 const SongButtons = (props) => {
@@ -14,12 +14,12 @@ const SongButtons = (props) => {
                 </Button>
             </Col>
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => props.saveTracks(props, [song.id])}>
+                <Button className="song-btn" onClick={() => saveSong(props)}>
                 <i className="fas fa-plus" />
                 </Button>
                 </Col>
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => props.deleteTracks(props, [song.id])}>
+                <Button className="song-btn" onClick={() => deleteSong(props)}>
                 <i className="fas fa-trash-alt" />
                 </Button>
             </Col>

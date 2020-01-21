@@ -61,7 +61,7 @@ const MusicList = (props) => {
                             {song.name}{' - '}{song.artists[0].name}
                         </Col>
                         <Col className="song-btns" lg="3" md="4" xs="12">
-                            <SongButtons {...props} song={song} />
+                            <SongButtons {...props} song={song} index={index}/>
                         </Col>
                     </Row>
                 </Col>
