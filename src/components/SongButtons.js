@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Row, Col } from 'reactstrap';
+import { playSong } from '../js/Helpers.js';
 import '../css/SongButtons.css';
 
 const SongButtons = (props) => {
@@ -7,7 +8,7 @@ const SongButtons = (props) => {
     return (
         <Row className="song-btn-row">
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => props.playTracks(props, [song.id])}>
+                <Button className="song-btn" onClick={() => playSong(props)}>
                 <i className="fas fa-play" />
                 </Button>
             </Col>
