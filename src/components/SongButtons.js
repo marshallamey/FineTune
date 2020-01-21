@@ -5,6 +5,7 @@ import '../css/SongButtons.css';
 
 const SongButtons = (props) => {
     const { song } = props;
+    console.warn("HEY! => ", props);
     return (
         <Row className="song-btn-row">
             <Col className="song-btn-col" xs="4">
