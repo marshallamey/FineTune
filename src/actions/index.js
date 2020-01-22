@@ -43,6 +43,13 @@ export const getTokens = tokens => ({
   payload: tokens,
 });
 
+export const deleteSong = (songs, index) => async (dispatch) => {
+    console.log(" DELETING ==> ", index);
+    let newSongs = [...songs];
+    newSongs.splice(index, 1);
+    dispatch({type: 'DELETE_SONG', payload: newSongs });
+};
+
 export const getExpireTime = expireTime => async (dispatch) => {
   //  console.log('FINETUNEAPP(actions.getExpireTime):: Access Token Expires ==> ', expireTime);
   dispatch({ type: 'GET_EXPIRE_TIME', payload: expireTime });

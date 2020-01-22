@@ -290,18 +290,20 @@ export const saveSong = (props) => {
     getNewToken(props);
   }
   spotifyApi.setAccessToken(props.spotifyTokens.access_token);
-  spotifyApi.addToMySavedTracks(props.song.id)
-    .then(() => {
+  console.log("==> ", props.song.id);
+  axios({
+    method: 'PUT',
+    url: 'https://api.spotify.com/v1/me/tracks',
+    headers: { 
+        "Authorization": `Bearer ${props.spotifyTokens.access_token}`, 
+        "Content-Type": "application/json" },
+    data: { ids: [props.song.id] },
+  }).then((res) => {
       trackSavedToast();
     });
 };
 
-/* deleteSong()::
-** Remove song from list
-*************************************************************************** */
-export const deleteSong = (props) => {
-    props.songs.splice(props.index,1);
-  };
+
 
 /* playSong()::
 ** Make a Spotify API request to play selected song
@@ -319,6 +321,7 @@ export const playSong = (props) => {
     playingToast(props.song.name, 'new window');
   } else {
     const device = Object.entries(props.devices);
+    console.log("==> ", device);
     axios({
       method: 'PUT',
       url: 'https://api.spotify.com/v1/me/player/play',

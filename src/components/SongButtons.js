@@ -1,10 +1,13 @@
 import React from 'react';
+import { Redirect, withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Button, Row, Col } from 'reactstrap';
-import { playSong, saveSong, deleteSong } from '../js/Helpers.js';
+import { playSong, saveSong } from '../js/Helpers.js';
+import * as actions from '../actions';
 import '../css/SongButtons.css';
 
 const SongButtons = (props) => {
-    const { song } = props;
+    const { songs, index, deleteSong } = props;
     console.warn("HEY! => ", props);
     return (
         <Row className="song-btn-row">
@@ -19,7 +22,7 @@ const SongButtons = (props) => {
                 </Button>
                 </Col>
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => deleteSong(props)}>
+                <Button className="song-btn" onClick={() => deleteSong(songs, index)}>
                 <i className="fas fa-trash-alt" />
                 </Button>
             </Col>
@@ -27,4 +30,10 @@ const SongButtons = (props) => {
     )
 };
 
-export default SongButtons;
+const mapStateToProps = (state, ownProps) => {
+    console.log("TT==>", state);
+    console.log("TT==>", ownProps);
+    return { songs: state.songs, deleteSong: state.deleteSong }
+};
+
+export default connect(mapStateToProps, actions)(SongButtons);
