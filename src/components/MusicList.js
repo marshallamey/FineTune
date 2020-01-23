@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { createNewPlaylist, isTokenExpired, getNewToken } from '../js/Helpers';
+import { createNewPlaylist } from '../js/Helpers';
 import * as actions from '../actions';
 import Song from './Song';
 import SongButtons from './SongButtons';

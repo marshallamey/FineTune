@@ -1,20 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import { Container } from "reactstrap";
 import { ToastContainer } from "react-toastify";
+import { Container } from "reactstrap";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import MusicSearchForm from "./MusicSearchForm";
 import MusicList from "./MusicList";
 import Header from "./Header";
-import Login from "./Login";
 import Donate from "./Donate";
+import Login from "./Login";
 import {
-    areTokensAvailable,
-    connectToSpotify,
-    isTokenExpired,
-    getNewToken
+    areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
 } from "../js/Helpers";
 import * as actions from "../actions";
 
