@@ -29,7 +29,7 @@ const SongButtons = (props) => {
     )
 };
 
-Song.propTypes = {
+SongButtons.propTypes = {
     deleteSong: PropTypes.func.isRequired,
     songs: PropTypes.shape([]).isRequired,
     index: PropTypes.number.isRequired
