@@ -24,6 +24,11 @@ export const setKeyword = keyword => ({
   payload: keyword,
 });
 
+export const setPlaylistName = name => ({
+    type: 'SET_PLAYLIST_NAME',
+    payload: name,
+  });
+
 export const changeAttributes = attributes => ({
   type: 'CHANGE_ATTRIBUTES',
   payload: attributes,

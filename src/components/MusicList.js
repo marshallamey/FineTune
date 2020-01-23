@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { 
-    Container, Media, Button, Row, Col, Modal, ModalHeader, ModalBody
+    Container, Media, Button, Row, Col, Modal, ModalHeader, ModalBody, Input
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -18,7 +18,7 @@ import 'react-notifications/lib/notifications.css';
 const spotifyApi = new SpotifyWebApi();
 
 const MusicList = (props) => {
-    const { spotifyTokens, user, className } = props;
+    const { spotifyTokens, user, className, setPlaylistName } = props;
     const [modal, setModal] = useState(false);
     const [selectedSong, selectSong] = useState(props.songs[0] || {name:"",artists:[{name:""}]});
     const toggle = (id = -1) => {
@@ -81,6 +81,12 @@ const MusicList = (props) => {
         <Container className="music-list-container">
             <ToastContainer />
             <h1 className="music-list-title">Your Playlist</h1>
+            <Input 
+                    className="music-list-name-input" 
+                    type="text" 
+                    placeholder="Playlist Name" 
+                    onChange={ e => setPlaylistName(e.target.value) }
+                />
             <Button className="music-list-save-btn" onClick={() => createNewPlaylist(props, SongURIs)}>
                 Save this playlist to Spotify
             </Button>
@@ -113,6 +119,7 @@ const mapStateToProps = state => ({
     user: state.user,
     devices: state.devices,
     expireTime: state.expireTime,
+    playlistName: state.playlistName
 });
 
 export default withRouter(connect(mapStateToProps, actions)(MusicList));

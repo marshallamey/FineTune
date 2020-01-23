@@ -3,6 +3,11 @@
    padding: 0;
 }
 
+.music-list-name-input {
+    margin: 20px auto;
+    width: 70%;
+}
+
 .music-list-save-btn {
    background-color: #ff2525;
    display: block;

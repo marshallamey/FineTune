@@ -242,7 +242,6 @@ export const handleSubmit = async (props, event) => {
   if (!props.attributes.modeDisabled) searchProps.target_mode = props.attributes.target_mode;
   if (!props.attributes.keyDisabled) searchProps.target_key = props.attributes.target_key;
 
-  console.log('FINETUNEAPP(MusicSearchForm):: (2)Sending these search props ==> ', searchProps);
   musicSearch(props, searchProps);
 };
 
@@ -250,7 +249,7 @@ export const handleSubmit = async (props, event) => {
 ** Make a Spotify API request to create a playlist with found music
 **************************************************************************** */
 export const createNewPlaylist = (props, songURIs) => {
-  const { user, spotifyTokens, devices } = props;
+  const { user, spotifyTokens, devices, playlistName } = props;
   // Redirect to home if access token expired
   if (spotifyTokens.access_token && isTokenExpired(props)) {
     console.log('START:: Getting new token');
@@ -259,7 +258,9 @@ export const createNewPlaylist = (props, songURIs) => {
   spotifyApi.setAccessToken(spotifyTokens.access_token);
   const date = new Date().toLocaleString();
   // Create a Spotify playlist
-  spotifyApi.createPlaylist(user.id, { name: `FineTune Playlist ${date}` })
+  console.log('==>', props);
+  console.log('==>', playlistName);
+  spotifyApi.createPlaylist(user.id, { name: playlistName || `FineTune Playlist ${date}` })
     .then((playlist) => {
       // Add the tracks to the playlist
       spotifyApi.addTracksToPlaylist(user.id, playlist.id, songURIs)
