@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import MusicSearchForm from "./MusicSearchForm";
 import MusicList from "./MusicList";
 import Header from "./Header";
-import Donate from "./Donate";
 import Login from "./Login";
 import {
     areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
