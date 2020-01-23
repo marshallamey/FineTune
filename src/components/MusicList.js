@@ -25,8 +25,7 @@ const MusicList = (props) => {
         setModal(!modal);
         if (id >= 0) { selectSong(props.songs[id]); }
     }
-    console.warn(selectedSong)
-    console.info(props.songs);
+
     // Redirect to login if no user
     if (!user.id) { return <Redirect to="/" />; }
 
@@ -34,7 +33,6 @@ const MusicList = (props) => {
     if (!spotifyApi.getAccessToken()) {
         spotifyApi.setAccessToken(spotifyTokens.access_token);
     }
-
 
     // Create Song components using array returned from Spotify music search.
     const SongURIs = props.songs.map(song => song.uri);

@@ -14,20 +14,20 @@ export const AuthServerURL = "http://ec2-44-229-197-205.us-west-2.compute.amazon
 ** Function returns tokens if available, returns false otherwise
 **************************************************************************** */
 export const areTokensAvailable = (props) => {
-  const tokens = {};
-  let e; const r = /([^&;=]+)=?([^&;]*)/g;
-  const q = window.location.hash.substring(1);
-  e = r.exec(q);
-  while (e) {
-    tokens[e[1]] = decodeURIComponent(e[2]);
+    const tokens = {};
+    let e; const r = /([^&;=]+)=?([^&;]*)/g;
+    const q = window.location.hash.substring(1);
     e = r.exec(q);
-  }
-  // console.log('FINETUNEAPP(App.fetchTokens):: Retrieving Spotify tokens ==> ', tokens);
-  if (tokens.access_token && tokens.refresh_token) {
-    props.getTokens(tokens);
-    return tokens;
-  }
-  return false;
+    while (e) {
+        tokens[e[1]] = decodeURIComponent(e[2]);
+        e = r.exec(q);
+    }
+
+    if (tokens.access_token && tokens.refresh_token) {
+        props.getTokens(tokens);
+        return tokens;
+    }
+    return false;
 };
 
 /* connectToSpotify()::

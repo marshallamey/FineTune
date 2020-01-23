@@ -3,22 +3,17 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
-    Container,
-    Row,
-    Col,
-    Form,
-    FormGroup,
-    FormText,
-    Label,
-    Input,
-    Button,
-    ButtonGroup
+    Container, Row, Col, Form, FormGroup, FormText,
+    Label, Input, Button, ButtonGroup
 } from "reactstrap";
 import SpotifyWebApi from "spotify-web-api-js";
 import { ToastContainer } from "react-toastify";
 import AttrSlider from "./AttrSlider";
-import { onGenreChange, handleSubmit, submitSongSearch } from "../js/Helpers";
+import { 
+    onGenreChange, handleSubmit, submitSongSearch 
+} from "../js/Helpers";
 import * as actions from "../actions";
+
 import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
 import "../css/MusicSearchForm.css";
@@ -34,20 +29,16 @@ class MusicSearchForm extends Component {
     }
 
     componentDidMount() {
-        console.log("FINETUNEAPP(MusicSearchForm):: COMPONENT MOUNTED");
-        const { spotifyTokens } = this.props;
-
         // Make sure Spotify API has access token
+        const { spotifyTokens } = this.props;
         if (!spotifyApi.getAccessToken()) {
             spotifyApi.setAccessToken(spotifyTokens.access_token);
         }
     }
 
     componentDidUpdate() {
-        console.log("FINETUNEAPP(MusicSearchForm):: COMPONENT UPDATED");
-        const { redirect, setRedirect, history } = this.props;
-
         // Redirect to MusicList after form submit
+        const { redirect, setRedirect, history } = this.props;
         if (redirect) {
             setRedirect(false);
             history.push("/results", null);
@@ -55,16 +46,8 @@ class MusicSearchForm extends Component {
     }
 
     render() {
-        console.log(
-            "FINETUNEAPP(MusicSearchForm):: (1)Rendering with these props ==> ",
-            this.props
-        );
-
         const {
-            allGenres,
-            selectedGenres,
-            resetAttributes,
-            setKeyword
+            allGenres, selectedGenres, resetAttributes, setKeyword
         } = this.props;
 
         const basicSearchForm = (
@@ -235,7 +218,7 @@ class MusicSearchForm extends Component {
             </Form>
         );
 
-
+        
         return (
             <Container className="music-search-form" fluid>
                 {/* NOTIFICATIONS */}

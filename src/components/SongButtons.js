@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Row, Col } from 'reactstrap';
 import { playSong, saveSong } from '../js/Helpers.js';
+import PropTypes from 'prop-types';
 import * as actions from '../actions';
 import '../css/SongButtons.css';
 
@@ -27,6 +28,12 @@ const SongButtons = (props) => {
         </Row>
     )
 };
+
+Song.propTypes = {
+    deleteSong: PropTypes.func.isRequired,
+    songs: PropTypes.shape([]).isRequired,
+    index: PropTypes.number.isRequired
+  };
 
 const mapStateToProps = (state) => ({
     songs: state.songs, 

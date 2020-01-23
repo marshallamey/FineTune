@@ -21,29 +21,18 @@ import "../css/App.css";
 
 class App extends React.Component {
     componentDidMount() {
-        console.log("FINETUNEAPP(App):: COMPONENT MOUNTED");
-        const { spotifyTokens } = this.props;
-
-        // Check for existing tokens from Spotify, connect if available refresh if expired
+        // Check for existing tokens from Spotify, connect if available refresh if expired  
         let tokens = areTokensAvailable(this.props);
         if (tokens) {
             connectToSpotify(this.props, tokens);
         }
+        const { spotifyTokens } = this.props;
         if (spotifyTokens.access_token && isTokenExpired(this.props)) {
-            console.log("FINETUNEAPP(App):: REFRESHING TOKEN");
             getNewToken(this.props);
         }
     }
 
-    componentDidUpdate() {
-        console.log("FINETUNEAPP(App):: APP UPDATED");
-    }
-
     render() {
-        console.log(
-            "FINETUNEAPP(App):: Rendering with these props ==> ",
-            this.props
-        );
         const { user } = this.props;
         return (
             <Container className="App" fluid>
@@ -54,23 +43,20 @@ class App extends React.Component {
                         <Route
                             exact
                             path="/"
-                            render={() => <Login user={user} />}
-                        />
-
+                            render={() => <Login user={user} />} />
                         <Route
                             path="/search"
-                            render={() => <MusicSearchForm />}
-                        />
-
-                        <Route path="/results" render={() => <MusicList />} />
-
-                        <Route path="/donate" render={() => <Donate />} />
+                            render={() => <MusicSearchForm />} />
+                        <Route 
+                            path="/results" 
+                            render={() => <MusicList />} />
                     </div>
                 </BrowserRouter>
             </Container>
         );
     }
 }
+
 App.propTypes = {
     spotifyTokens: PropTypes.shape({}).isRequired,
     user: PropTypes.shape({}).isRequired
