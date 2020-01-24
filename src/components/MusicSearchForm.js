@@ -55,19 +55,19 @@ class MusicSearchForm extends Component {
                 <Input 
                     className="search-input" 
                     type="text" 
-                    placeholder="Enter a song, artist, or album" 
+                    placeholder="Enter a song" 
                     onChange={ e => setKeyword(e.target.value) }
                 />
                 <Button 
                     className="search-btn" 
                     color="danger" 
                     type="submit"
-                > Find Song </Button>
+                > Search </Button>
             </Form>
         );
 
         const advancedSearchForm = (
-            <Form className="advanced-search-form" onSubmit={event => handleSubmit(this.props, event)}>
+            <Form className="advanced-search-form" onSubmit={ e => handleSubmit(this.props, e) }>
                 <Row>
                     {/* CHOOSE GENRE */}
                     <Col className="genre-col" lg="3">
@@ -218,7 +218,7 @@ class MusicSearchForm extends Component {
             </Form>
         );
 
-        
+
         return (
             <Container className="music-search-form" fluid>
                 {/* NOTIFICATIONS */}
