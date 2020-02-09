@@ -1,4 +1,3 @@
-# Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
 version: 0.2
 
 phases:
@@ -6,14 +5,11 @@ phases:
     runtime-versions:
       nodejs: 12  
     commands:
-      - echo Running Commands...
+      - echo Installing Nodejs...
   pre_build:
     commands:
       - echo Pre-Build Phase...
       - npm install
-      - cd client
-      - npm install
-      - mv node_modules/react-cardstack/dist/CardStack.js node_modules/react-cardstack/dist/Cardstack.js
   build:
     commands:
       - echo Build started on `date`
@@ -28,4 +24,4 @@ phases:
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
 artifacts:
   files:
-    - /*
+    - build/*
