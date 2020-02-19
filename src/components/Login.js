@@ -12,7 +12,7 @@ const Login = (props) => {
     }
     return (
         <Container className="Login" style={user.id ? { display: 'none' } : { display: 'block' }}>
-            <h3>Welcome to FineTune</h3>
+            <h3>Build Awesome Playlists</h3>
             { user.id ? null : <LoginButton /> }
         </Container>
     );
