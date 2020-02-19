@@ -3,26 +3,28 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12  
-    commands:
-      - echo Installing Nodejs...
+      docker: 18 
   pre_build:
     commands:
-      - echo Pre-Build Phase...
-      - npm install
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=046979808819.dkr.ecr.us-west-2.amazonaws.com/finetune
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code
-      - npm run build
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
-# Include only the files required for your application to run.
-# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
-# used only for building and testing.
-# ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing definitions file...
+      - printf '[{"name":"finetune-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files:
-    - '**/*'
-  base-directory: 'build'
+  files: imagedefinitions.json
