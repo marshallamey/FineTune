@@ -38,7 +38,7 @@ class App extends React.Component {
                 <Header user={user} />
                 <ToastContainer />
                 <BrowserRouter>
-                    <div>
+                    <div className="content">
                         <Route
                             exact
                             path="/"

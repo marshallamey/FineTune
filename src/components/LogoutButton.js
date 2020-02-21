@@ -9,8 +9,7 @@ export default function LogoutButton(props) {
     return (
         <div>
             <p>
-                Logged in as
-                { user.id == null ? '' : ` ${user.id}` }
+                Logged in as {user.id ? ` ${user.id}` : ''}
             </p>
             <a href={`${AuthServerURL}/spotify/logout`} onClick={() => clear()}>
                 <Button outline onClick={() => clear()}>

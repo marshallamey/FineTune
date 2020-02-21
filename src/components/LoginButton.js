@@ -7,7 +7,7 @@ export default function LoginButton() {
         <a href={`${AuthServerURL}/spotify/login`}>
         <Button outline>
             <img className="spotify-logo" src="/img/spotify-logo.png" alt="spotify-logo.JPG" />
-            Login with Spotify to begin
+            Login with Spotify
         </Button>
         </a>
     );
