@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import MusicSearchForm from "./MusicSearchForm";
 import MusicList from "./MusicList";
 import Header from "./Header";
+import Footer from "./Footer";
 import Login from "./Login";
 import {
     areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
@@ -38,7 +39,7 @@ class App extends React.Component {
                 <Header user={user} />
                 <ToastContainer />
                 <BrowserRouter>
-                    <div className="content">
+                    <div>
                         <Route
                             exact
                             path="/"
@@ -51,6 +52,7 @@ class App extends React.Component {
                             render={() => <MusicList />} />
                     </div>
                 </BrowserRouter>
+                <Footer />
             </Container>
         );
     }

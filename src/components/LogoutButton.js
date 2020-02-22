@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { clear } from 'redux-localstorage-simple';
-import { AuthServerURL } from '../js/Helpers.js';
+import "../css/Login.css";
 
 export default function LogoutButton(props) {
     const { user } = props;
@@ -12,7 +12,7 @@ export default function LogoutButton(props) {
                 Logged in as {user.id ? ` ${user.id}` : ''}
             </p>
             <a href={`https://finetune.io/spotify/logout`} onClick={() => clear()}>
-                <Button outline onClick={() => clear()}>
+                <Button classname="logout-button" outline onClick={() => clear()}>
                     <img className="spotify-logo" src="/img/spotify-logo.png" alt="spotify-logo.JPG" />
                     Logout
                 </Button>

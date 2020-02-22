@@ -1,20 +1,106 @@
 .Login{
-    margin-top: 30px;
     padding: 0;
-    height: 100vh;
+    background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }    
  
-.top {
-    height: 250px;
+
+.intro {
+    height: 60vh;
+    background:rgba(0, 0, 0, 1);
+    color: chartreuse;
+}
+.play {
+    /* Photo by Jacek Dylag on Unsplash */
+    background-image: url("/img/jacek-dylag-hUHzaiAHuUc-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
 }
 
-.middle {
+.run {
+    /* Photo by Alexander Redl on Unsplash */
+    background-image: url("/img/alexander-redl-d3bYmnZ0ank-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-right: 50%;
+}
+
+.dance {
+    /* Photo by Henrique Junior on Unsplash */
+    background-image: url("/img/henrique-junior-q9Piu-GqG6E-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.study {
+    /* Photo by Wes Hicks on Unsplash */
+    background-image: url("/img/wes-hicks-4-EeTnaC1S4-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.listen {
+    /* Photo by Malte Wingen on Unsplash */
+    background-image: url("/img/malte-wingen-PDX_a_82obo-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-right: 60%;
+    color: black;
+}
+
+.walk {
+    /* Photo by Yingchou Han on Unsplash */
+    background-image: url("/img/yingchou-han-IJrIeCs3D4g-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.transparent {
+    height: 33vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+.dark-box{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.light-box{
+    
     width: 100%;
-    height: 100vh;
-    background:transparent;
+    margin: 0 auto;
+    color: rgb(37, 37, 37);
+
 }
 
-.bottom {
-    height: 100vh;
-    background: transparent;
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+.login-button { 
+    min-width: 190px; 
+    font-size: 15px;
+    padding: .3em .7em;
 }

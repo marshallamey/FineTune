@@ -7,11 +7,16 @@ const Header = (props) => {
     const { user } = props;
     return (
         <header className="App-header sticky">
-            <a href="/">
-                {/* <img className="header-logo" src="/img/finetune-banner-logo.png" alt="finetune-banner-logo.png" /> */}
-                <h2>FineTune</h2>
-            </a>
-            { user.id ? <LogoutButton user={user} /> : <LoginButton /> }
+            <div className="App-header-content">
+                <div className='left-content'>
+                    <h4 className="App-title">FineTune</h4>
+                    <p className="App-desc">A Playlist Builder</p>
+                </div>
+                <div className='right-content'>
+                    { user.id ? <LogoutButton user={user} /> : <LoginButton /> }
+                </div>
+                
+            </div>     
         </header>
     );
 };

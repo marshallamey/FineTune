@@ -1,40 +1,49 @@
 .App {
   text-align: center;
   padding: 0;
-  background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
 }
 
 .App-header {
+   background-color: rgba(0, 0, 0, 0.3);
+   padding: 5px 15px;
+   height: 66px;
+}
+
+.App-header-content {
     display: flex;
     justify-content: space-between;
-   background-color: rgba(0, 0, 0, 0.3);
-   padding: 10px 5%;
-   color: white;
+    align-items: center;
+    max-width: 1350px;
+    color: white;
+    margin: 0 auto;
 }
 
-.App-title-fine {
-   display: inline-block;
-   font-size: 3.5em;
-   font-weight: 200;
-   margin-bottom: -15px;
-   font-family: 'Alex Brush', cursive;
+.left-content {
+    display: flex;
+    align-items: center;
 }
 
-.App-title-tune {
-   display: inline-block;
-   font-size: 4.5em;
-   font-weight: 600;
-   margin-bottom: -15px;
-   font-family: 'Alex Brush', cursive;
+.App-title {
+   font-size: 30px;
+   
+}
+
+.App-desc {
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 13px;
 }
 
 .App-intro {
   font-size: large;
+}
+
+.App-footer {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .spotify-logo{
