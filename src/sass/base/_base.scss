@@ -1,0 +1,42 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  background-color: rgba($color-dark-blue, 1);
+  box-sizing: border-box;
+  background-color: #333;
+  height: 100%;
+}
+
+@media screen and (min-width: 782px) {
+  .header-tag{ margin-top: 2.2rem; }
+}
+
+@media screen and (max-width: 781px) {
+  .header-tag{ margin-top: -1rem; }
+}
+
+
+@media screen and (max-width: 540px) {
+  html { font-size: 40%;}
+  .header-tag { margin-top: -1rem; }
+
+}
+
+@media screen and (max-width: 320px) {
+  html { font-size: 30%;}
+  .header-tag { margin-top: -1rem; }
+}
+
+
+
+
+

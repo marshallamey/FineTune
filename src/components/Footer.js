@@ -6,10 +6,10 @@ const Footer = (props) => {
     const { user } = props;
     return (
         <footer className="App-footer">
-            <a href="/">
-                {/* <img className="footer-logo" src="/img/finetune-banner-logo.png" alt="finetune-banner-logo.png" /> */}
-                <p>FineTune Footer</p>
-            </a>
+            <a href="/">About</a>
+            <a href="/">Privacy Policy</a>
+            <a href="/">Cookie Policy</a>
+            <a href="/">Marshall Jarreau &copy; 2020</a>
         </footer>
     );
 };

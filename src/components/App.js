@@ -35,7 +35,7 @@ class App extends React.Component {
     render() {
         const { user } = this.props;
         return (
-            <Container className="App" fluid>
+            <main className="App">
                 <Header user={user} />
                 <ToastContainer />
                 <BrowserRouter>
@@ -53,7 +53,7 @@ class App extends React.Component {
                     </div>
                 </BrowserRouter>
                 <Footer />
-            </Container>
+            </main>
         );
     }
 }

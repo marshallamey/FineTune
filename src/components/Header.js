@@ -6,16 +6,15 @@ import LoginButton from './LoginButton';
 const Header = (props) => {
     const { user } = props;
     return (
-        <header className="App-header sticky">
-            <div className="App-header-content">
-                <div className='left-content'>
-                    <h4 className="App-title">FineTune</h4>
-                    <p className="App-desc">A Playlist Builder</p>
+        <header className="header header--sticky">
+            <div className="header__content">
+                <div className='header__content-left'>
+                    <h4 className="header-title">FineTune</h4>
+                    <p className="header-tag">Find Music. Create Playlists.</p>
                 </div>
-                <div className='right-content'>
+                <div className='header__content-right'>
                     { user.id ? <LogoutButton user={user} /> : <LoginButton /> }
                 </div>
-                
             </div>     
         </header>
     );
