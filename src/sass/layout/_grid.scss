@@ -1,7 +1,7 @@
 .row {
-  max-width: $grid-width;
+  //max-width: $grid-width;
   // background-color: palegreen;
-  margin: 0 auto;
+ 
 
   &:not(:last-child) { margin-bottom: $gutter-vertical; }
 
@@ -12,6 +12,7 @@
     &:not(:last-child) { margin-right: $gutter-horizontal; }
   }
 
+  .col {}
   .col-1-2 { width: calc((100% - #{$gutter-horizontal} * 1) / 2); }
   .col-1-3 { width: calc((100% - #{$gutter-horizontal} * 2) / 3); }
   .col-1-4 { width: calc((100% - #{$gutter-horizontal} * 3) / 4); }
@@ -24,4 +25,28 @@
   .col-1-11 { width: calc((100% - #{$gutter-horizontal} * 10) / 11); }
 }
 
+@media screen and (max-width: 1280px) {
+  html { font-size: 100%px; }
+  .header-tag{  }
+}
 
+@media screen and (max-width: 960px) {
+  html { font-size: 40%;}
+}
+
+// for screens less than 320px wide
+@media screen and (max-width: 640px) {
+  html { font-size: 24%; }
+  .header-title { 
+    width: 100%;
+    margin-bottom: -1rem;
+    font-size: 5rem;
+  }
+  .header-tag { float: none; }
+  .home__content { font-size: 2.5rem;}
+}
+
+// for screens less than 320px wide
+@media screen and (max-width: 320px) {
+  html { min-width: 320px; }
+}

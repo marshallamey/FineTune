@@ -1,5 +1,10 @@
+.card-group {
+  max-width: $grid-width;
+  margin: 0 auto;
+}
+
 .card {
-  background-color: rgba($color-oxford-blue, 1);
+  background-color: rgba($color-white, 1);
   border: .1rem solid $color-black;
   min-height: 50rem;
   padding: 1rem;
@@ -7,7 +12,7 @@
 
 
   &__title {
-    color: $color-lavender;
+    color: $color-primary-1;
     margin-bottom: 1rem;
   }
 
@@ -26,7 +31,7 @@
 
   &__link-box {
     &__link { 
-      color: $color-lavender;
+      color: $color-primary-1;
       font-size: 5rem;
       padding: 1rem;
     }

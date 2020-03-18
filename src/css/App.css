@@ -1,40 +1,10 @@
-.App {
-  text-align: center;
-  padding: 0;
-  
 
-}
 
-.App-header {
-   background-color: rgba(0, 0, 0, 0.3);
-   padding: 5px 15px;
-   height: 66px;
-}
 
-.App-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1350px;
-    color: white;
-    margin: 0 auto;
-}
 
-.left-content {
-    display: flex;
-    align-items: center;
-}
 
-.App-title {
-   font-size: 30px;
-   
-}
 
-.App-desc {
-    margin-top: 10px;
-    margin-left: 15px;
-    font-size: 13px;
-}
+
 
 .App-intro {
   font-size: large;

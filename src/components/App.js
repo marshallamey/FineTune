@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Container } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import MusicSearchForm from "./MusicSearchForm";
-import MusicList from "./MusicList";
+import Home from "../pages/Home";
+import MusicSearchForm from "../pages/MusicSearchForm";
+import MusicList from "../pages/MusicList";
 import Header from "./Header";
 import Footer from "./Footer";
-import Login from "./Login";
+
 import {
     areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
 } from "../js/Helpers";
@@ -17,7 +17,7 @@ import * as actions from "../actions";
 
 import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
-import "../css/App.css";
+
 
 class App extends React.Component {
     componentDidMount() {
@@ -43,7 +43,7 @@ class App extends React.Component {
                         <Route
                             exact
                             path="/"
-                            render={() => <Login user={user} />} />
+                            render={() => <Home user={user} />} />
                         <Route
                             path="/search"
                             render={() => <MusicSearchForm />} />

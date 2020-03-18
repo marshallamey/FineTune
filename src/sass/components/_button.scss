@@ -27,11 +27,11 @@
 
   &--white {
       background-color: rgba($color-black, 1);
-      color: $color-grey;
+      color: $color-white;
 
       &::after {
           background-color: rgba($color-black, 1);;
-          color: rgba($color-grey, 1);  
+          color: rgba($color-white, 1);  
       }
   }
 
@@ -53,4 +53,21 @@
       transition: all .4s;
       opacity: .3;
   } 
+}
+
+.btn__login { 
+    min-width: 120px;
+    max-width: 200px; 
+    font-size: 1.5rem;
+    padding: .3em .7em;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 1rem;
+    text-decoration: none;
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
 }
