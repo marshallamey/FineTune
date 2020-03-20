@@ -4,16 +4,18 @@
 }
 
 .card {
-  background-color: rgba($color-white, 1);
+  background-color: rgba(#FD4928, 1);
   border: .1rem solid $color-black;
   min-height: 50rem;
   padding: 1rem;
 
 
 
-  &__title {
+  &-title {
     color: $color-primary-1;
     margin-bottom: 1rem;
+    font-size: 3rem;
+    text-transform: uppercase;
   }
 
   // &__body {
@@ -21,7 +23,7 @@
 
   &__img-box {
     &__img {
-      width: 90%;
+      width: 100%;
     }
   }
 

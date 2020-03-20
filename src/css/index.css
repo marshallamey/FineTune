@@ -145,15 +145,17 @@ a:hover {
   margin: 0 auto; }
 
 .card {
-  background-color: white;
+  background-color: #fd4928;
   border: 0.1rem solid black;
   min-height: 50rem;
   padding: 1rem; }
-  .card__title {
+  .card-title {
     color: #66D58B;
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    text-transform: uppercase; }
   .card__img-box__img {
-    width: 90%; }
+    width: 100%; }
   .card__link-box__link {
     color: #66D58B;
     font-size: 5rem;
@@ -208,6 +210,13 @@ a:hover {
       height: 100%;
       margin: 5rem 0;
       padding: 0 3rem; }
+
+hr {
+  margin: 0 auto;
+  color: #1ed760;
+  border: 1px solid #444444;
+  margin-bottom: 6rem;
+  width: 60%; }
 
 .spotify-logo {
   height: 25px;
@@ -4715,6 +4724,13 @@ readers do not read off random characters that represent icons */
     margin-left: 1.5rem;
     margin-top: 2.2rem;
     vertical-align: bottom; }
+
+.App-footer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 13px; }
 
 .App {
   text-align: center;

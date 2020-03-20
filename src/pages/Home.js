@@ -31,21 +31,34 @@ const Home = (props) => {
                     </div> 
                 </div>  
 
+                <hr></hr>
                 <div className="row">
                     <div className="card-group">
                         <div className="col-1-3">
+                        <div className="card-title">Music in your key</div>
                             <div className="card">
-                                <div className="card-title">CARD 1</div>
+                               
+                                <div className="card__img-box">
+                                    <img className="card__img-box__img" src="/img/ftmobile2.webp" alt="finetune-ss1"></img>
+                                </div>
                             </div>
                         </div>
                         <div className="col-1-3">
+                        <div className="card-title">Music at your pace</div>
                             <div className="card">
-                            <div className="card-title">CARD 2</div>
+                                
+                                <div className="card__img-box">
+                                    <img className="card__img-box__img" src="/img/ftmobile1.webp" alt="finetune-ss1"></img>
+                                </div>
                             </div>
                         </div>
                         <div className="col-1-3">
+                        <div className="card-title">Music for your mood</div>
                             <div className="card">
-                            <div className="card-title">CARD 3</div>
+                            
+                            <div className="card__img-box">
+                                    <img className="card__img-box__img" src="/img/ftmobile.webp" alt="finetune-ss1"></img>
+                                </div>
                             </div>
                         </div>
                     </div>

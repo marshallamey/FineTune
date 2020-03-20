@@ -65,7 +65,13 @@
         }
     }
 }
-
+hr {
+    margin: 0 auto;
+    color: $color-green;
+    border: 1px solid #444444;
+    margin-bottom: 6rem;
+    width: 60%;
+}
 
 .spotify-logo{
     height: 25px;
