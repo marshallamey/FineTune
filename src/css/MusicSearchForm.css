@@ -53,10 +53,9 @@ select.form-control.genre-select{
    cursor: pointer;
 }
 
-.MusicSearchForm .rc-slider-disabled {
+.advanced-search-form .rc-slider-disabled {
    background-color: #444;
 }
-.MusicSearchForm .rc-slider-disabled .rc-slider-rail{
+.advanced-search-form .rc-slider-disabled .rc-slider-rail{
    background-color: #666;
 }
-

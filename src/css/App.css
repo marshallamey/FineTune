@@ -10,21 +10,10 @@
   font-size: large;
 }
 
-.App-footer {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 13px;
-}
 
-.spotify-logo{
-   height: 25px;
-   margin-right: 10px;
-}
-.row{
-   margin: 0;
-}
+
+
+
 .Col{
    margin-top: 20px;
    padding: 0;

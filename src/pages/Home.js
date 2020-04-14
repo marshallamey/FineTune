@@ -20,10 +20,10 @@ const Home = (props) => {
 
             <section className='home__content'>
                 <div className='intro'>  
-                    <div className='intro__img-box'>
+                    {/* <div className='intro__img-box'>
                         <img className='intro__img' object src='/img/Spotify_Icon_RGB_Green.png' alt='Spotify logo' />
                         <div className='intro__img-text'>Powered by Spotify</div>
-                    </div>
+                    </div> */}
                     <div className='intro__text-box'>
                         <p className='intro__text'>FineTune is an advanced music search tool that allows you to find the exact music you need for any occassion. </p> 
                         <p className='intro__text'>As a Spotify user, you can look for songs of a specific length, key, tempo, or even mood.  

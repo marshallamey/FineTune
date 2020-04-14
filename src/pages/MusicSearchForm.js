@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "rc-slider/assets/index.css";
+import "../css/MusicSearchForm.css";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -50,19 +51,19 @@ class MusicSearchForm extends Component {
         } = this.props;
 
         const basicSearchForm = (
-            <Form className="basic-search-form" onSubmit={ e => submitSongSearch(this.props, e) }>
-                <Input 
+            <div className="basic-search-form" onSubmit={ e => submitSongSearch(this.props, e) }>
+                <input 
                     className="search-input" 
                     type="text" 
                     placeholder="Enter a song" 
                     onChange={ e => setKeyword(e.target.value) }
                 />
-                <Button 
-                    className="search-btn" 
+                <button 
+                    className="btn btn__submit" 
                     color="danger" 
                     type="submit"
-                > Search </Button>
-            </Form>
+                > Search </button>
+            </div>
         );
 
         const advancedSearchForm = (
@@ -158,7 +159,7 @@ class MusicSearchForm extends Component {
                                     step={0.5}
                                 />
                             </Col>
-                            <Col>
+                            <Col md="6" sm="12">
                                 <AttrSlider
                                     name="popularity"
                                     id="pop"

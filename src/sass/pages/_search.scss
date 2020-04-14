@@ -1,0 +1,75 @@
+.music-search-form { 
+    padding: 20px; 
+
+    &__title {
+        color: blue;
+    }
+     
+}
+
+.search-type {
+    &-button {
+        background-color: $color-secondary-2-4;
+    }
+}
+
+select.form-control.genre-select{
+   height: 300px;
+}
+.basic-search-form {
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+.search-input {
+   margin: 20px auto;
+   width: 50%;
+}
+.search-btn {
+
+}
+.genre-col{
+   margin-bottom: 50px;
+   padding-right: 30px;
+   border-right: 1px solid #444;
+}
+.features{
+   margin: 0 auto;
+   padding-bottom: 20px;
+}
+.features-heading{
+   margin: 0;
+}
+.description{ 
+   font-size: 0.8em;
+   margin: 0;
+}
+
+.help{
+   margin-left: 8px;
+   color: #fcfa81;
+}
+.help:hover{
+   cursor: pointer;
+   color: #ff2525;
+}
+.form-group {
+   padding: 0 10px 20px 10px;
+   margin-right: 10px;
+}
+.form-group label {
+   font-weight: 500;
+}
+.form-group output {
+   color: #666;
+}
+.form-check-input:hover{
+   cursor: pointer;
+}
+
+.music-search-form .rc-slider-disabled {
+   background-color: #444;
+}
+.music-search-form .rc-slider-disabled .rc-slider-rail{
+   background-color: #666;
+}
+

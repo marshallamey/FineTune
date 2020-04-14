@@ -82,63 +82,61 @@ a:hover {
 .u-margin-bottom-lg {
   margin-bottom: 8rem; }
 
-.btn:link, .btn:visited {
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border-radius: 10rem;
-  transition: all .2s;
-  position: relative; }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.5) scaleY(2);
-    opacity: 0; }
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: black;
-  color: white; }
-  .btn--white::after {
-    background-color: black;
-    color: white; }
-
-.btn--animated {
-  animation: moveInBottom 1.5s ease-in .75s;
-  animation-fill-mode: backwards; }
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 50rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s;
-  opacity: .3; }
-
-.btn__login {
+.btn {
   min-width: 120px;
   max-width: 200px;
   font-size: 1.5rem;
   padding: .3em .7em;
-  color: white;
-  border: 1px solid white;
-  background-color: transparent;
   border-radius: 1rem;
   text-decoration: none; }
-  .btn__login .logo {
-    display: flex;
-    align-items: center; }
+  .btn:link, .btn:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.5) scaleY(2);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: black;
+    color: white; }
+    .btn--white::after {
+      background-color: black;
+      color: white; }
+  .btn--animated {
+    animation: moveInBottom 1.5s ease-in .75s;
+    animation-fill-mode: backwards; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    opacity: .3; }
+  .btn__login {
+    color: white;
+    border: 1px solid white;
+    background-color: transparent; }
+    .btn__login .logo {
+      display: flex;
+      align-items: center; }
+  .btn__search-type {
+    margin: 0 1rem;
+    background-color: red; }
 
 .card-group {
   max-width: 135rem;
@@ -160,6 +158,18 @@ a:hover {
     color: #66D58B;
     font-size: 5rem;
     padding: 1rem; }
+
+.Axis path,
+.Axis line {
+  stroke: #E0E0E0; }
+
+.Axis text {
+  font-size: 11px;
+  fill: black; }
+
+.Axis-Bottom text {
+  transform: rotate(-45deg);
+  text-anchor: end; }
 
 .home {
   background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
@@ -241,6 +251,68 @@ hr {
     background-color: black;
     border: none;
     box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.5); }
+
+.music-search-form {
+  padding: 20px; }
+  .music-search-form__title {
+    color: blue; }
+
+.search-type-button {
+  background-color: #5A9C00; }
+
+select.form-control.genre-select {
+  height: 300px; }
+
+.basic-search-form {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.search-input {
+  margin: 20px auto;
+  width: 50%; }
+
+.genre-col {
+  margin-bottom: 50px;
+  padding-right: 30px;
+  border-right: 1px solid #444; }
+
+.features {
+  margin: 0 auto;
+  padding-bottom: 20px; }
+
+.features-heading {
+  margin: 0; }
+
+.description {
+  font-size: 0.8em;
+  margin: 0; }
+
+.help {
+  margin-left: 8px;
+  color: #fcfa81; }
+
+.help:hover {
+  cursor: pointer;
+  color: #ff2525; }
+
+.form-group {
+  padding: 0 10px 20px 10px;
+  margin-right: 10px; }
+
+.form-group label {
+  font-weight: 500; }
+
+.form-group output {
+  color: #666; }
+
+.form-check-input:hover {
+  cursor: pointer; }
+
+.music-search-form .rc-slider-disabled {
+  background-color: #444; }
+
+.music-search-form .rc-slider-disabled .rc-slider-rail {
+  background-color: #666; }
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
@@ -4734,7 +4806,8 @@ readers do not read off random characters that represent icons */
 
 .App {
   text-align: center;
-  padding: 0; }
+  padding: 0;
+  margin-top: 72px; }
 
 .row:not(:last-child) {
   margin-bottom: 5rem; }
@@ -4749,6 +4822,9 @@ readers do not read off random characters that represent icons */
   .row [class^="col-"]:not(:last-child) {
     margin-right: 4rem; }
 
+.row .col {
+  width: 100%; }
+
 .row .col-1-2 {
   width: calc((100% - 4rem * 1) / 2); }
 
@@ -4762,6 +4838,7 @@ readers do not read off random characters that represent icons */
   width: calc((100% - 4rem * 4) / 5); }
 
 .row .col-1-6 {
+  float: left;
   width: calc((100% - 4rem * 5) / 6); }
 
 .row .col-1-7 {
