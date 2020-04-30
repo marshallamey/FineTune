@@ -68,7 +68,7 @@ class MusicSearchForm extends Component {
 
         const advancedSearchForm = (
             <Form className="advanced-search-form" onSubmit={ e => handleSubmit(this.props, e) }>
-                <Row>
+                <Row className="genre-att-row">
                     {/* CHOOSE GENRE */}
                     <Col className="genre-col" lg="3">
                         <FormGroup>

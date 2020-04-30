@@ -4,12 +4,12 @@ import { ToastContainer } from "react-toastify";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import Home from "../pages/Home";
+
 import MusicSearchForm from "../pages/MusicSearchForm";
 import MusicList from "../pages/MusicList";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import Home from "../pages/Home";
 import {
     areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
 } from "../js/Helpers";
@@ -40,7 +40,7 @@ class App extends React.Component {
                 <Header user={user} />
                 <ToastContainer />
                 <BrowserRouter>
-                    <div>
+                    <div className='main-div'>
                         <Route
                             exact
                             path="/"

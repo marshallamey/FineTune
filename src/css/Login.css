@@ -1,0 +1,99 @@
+.Login{
+    padding: 0;
+    background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}    
+ 
+
+
+.play {
+    /* Photo by Jacek Dylag on Unsplash */
+    background-image: url("/img/jacek-dylag-hUHzaiAHuUc-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.run {
+    /* Photo by Alexander Redl on Unsplash */
+    background-image: url("/img/alexander-redl-d3bYmnZ0ank-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-right: 50%;
+}
+
+.dance {
+    /* Photo by Henrique Junior on Unsplash */
+    background-image: url("/img/henrique-junior-q9Piu-GqG6E-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.listen {
+    /* Photo by Malte Wingen on Unsplash */
+    background-image: url("/img/malte-wingen-PDX_a_82obo-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-left: 2vw;
+    padding-right: 60%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.listen .login-button {
+    height: 2rem;
+    min-height: 40px;
+    width: 5rem;
+    background-color: black;
+    border: none;
+    box-shadow: 3px 2px 7px rgba(0, 0, 0, .5);
+}
+
+
+.transparent {
+    height: 35vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+.dark-box{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.light-box{
+    
+    width: 100%;
+    margin: 0 auto;
+    color: rgb(37, 37, 37);
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+.login-button { 
+    min-width: 190px; 
+    font-size: 15px;
+    padding: .3em .7em;
+}

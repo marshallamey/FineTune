@@ -12,7 +12,7 @@ const Home = (props) => {
     return (
         <div fluid className="home">
             
-            <div className="home__spacer"></div>
+            {/* <div className="home__spacer"></div> */}
             
             <section className="home__content home__content--transparent">
                 <h1 className='heading-secondary'>Discover music on your terms</h1>
@@ -35,7 +35,7 @@ const Home = (props) => {
                 <div className="row">
                     <div className="card-group">
                         <div className="col-1-3">
-                        <div className="card-title">Music in your key</div>
+                        <div className="card__title">Music in your key</div>
                             <div className="card">
                                
                                 <div className="card__img-box">
@@ -44,7 +44,7 @@ const Home = (props) => {
                             </div>
                         </div>
                         <div className="col-1-3">
-                        <div className="card-title">Music at your pace</div>
+                        <div className="card__title">Music at your pace</div>
                             <div className="card">
                                 
                                 <div className="card__img-box">
@@ -53,7 +53,7 @@ const Home = (props) => {
                             </div>
                         </div>
                         <div className="col-1-3">
-                        <div className="card-title">Music for your mood</div>
+                        <div className="card__title">Music for your mood</div>
                             <div className="card">
                             
                             <div className="card__img-box">

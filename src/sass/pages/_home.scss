@@ -1,102 +1,105 @@
 .home{
-    background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
+  background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 
-    &__spacer {
-        height: 7.2rem;
-        min-height: 50px;
-        width: 100%;
-        clear: both;
-    }
+  &__spacer {
+      height: 7.2rem;
+      min-height: 50px;
+      width: 100%;
+      clear: both;
+  }
 
-    &__content {
-        background-color: $color-black;
-        padding: 3rem;
-        padding-bottom: 6rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 35vh;
-        margin: 0 auto;
+  &__content {
+      background-color: $color-black;
+      padding: 3rem;
+      padding-bottom: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 35vh;
+      margin: 0 auto;
 
-        &--transparent {
-            padding: 8rem;
-            background-color: rgba($color-white, 0.3);
-            color: black;
-        }
-    }
+      &--transparent {
+          padding: 8rem;
+          background-color: rgba($color-white, 0.3);
+          color: black;
+      }
+  }
 } 
 
 .intro {
-    max-width: 1350px;
-    margin: 0 auto;
-    padding-bottom: 6rem;
-    
-    &__img {
-        height: 20rem;
-        width: 20rem;
-        margin: 3rem 0;
+  min-height: 50vh;
+  max-width: 1350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &__img {
+      height: 20rem;
+      width: 20rem;
+      margin: 3rem 0;
 
-        &-text {
-            color: $color-green;
-            margin-top: -3rem;
-        }
+      &-text {
+          color: $color-green;
+          margin-top: -3rem;
+      }
 
-        &-box {
-            float: left;
-            margin: 0 3em;
-        }
-    }
-    
-    &__text {
-        color: $color-green;
-        margin: 0 auto;
-        font-size: 2.4rem;
-        line-height: 5rem;
-            
-        &-box {
-            height: 100%;
-            margin: 5rem 0;
-            padding: 0 3rem;
-        }
-    }
+      &-box {
+          float: left;
+          margin: 0 3em;
+      }
+  }
+  
+  &__text {
+      color: $color-green;
+      margin: 0 auto;
+      font-size: 2.4rem;
+      line-height: 5rem;
+          
+      &-box {
+          height: 100%;
+          margin: 5rem 0;
+          padding: 0 3rem;
+      }
+  }
 }
 hr {
-    margin: 0 auto;
-    color: $color-green;
-    border: 1px solid #444444;
-    margin-bottom: 6rem;
-    width: 60%;
+  margin: 0 auto;
+  color: $color-green;
+  border: 1px solid #444444;
+  margin-bottom: 6rem;
+  width: 60%;
 }
 
 .spotify-logo{
-    height: 25px;
-    margin-right: 10px;
+  height: 25px;
+  margin-right: 10px;
 }
 
 .login {
-    /* Photo by Malte Wingen on Unsplash */
-    background-image: url("/img/malte-wingen-PDX_a_82obo-unsplash.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    padding-left: 2vw;
-    padding-right: 60%;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  /* Photo by Malte Wingen on Unsplash */
+  background-image: url("/img/malte-wingen-PDX_a_82obo-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding-left: 2vw;
+  padding-right: 60%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-    .btn__login {
-        margin: 0 auto;
-        padding: 1.3rem 1.7rem;
-        background-color: $color-black;
-        border: none;
-        box-shadow: 3px 2px 7px rgba($color-black, .5);
-    }
+  .btn__login {
+      margin: 0 auto;
+      padding: 1.3rem 1.7rem;
+      background-color: $color-black;
+      border: none;
+      box-shadow: 3px 2px 7px rgba($color-black, .5);
+  }
 }

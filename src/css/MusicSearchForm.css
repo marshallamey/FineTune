@@ -11,8 +11,8 @@ select.form-control.genre-select{
    margin: 20px auto;
    width: 50%;
 }
-.search-btn {
-
+.advanced-search-form .row {
+   margin: 0 auto;
 }
 .genre-col{
    margin-bottom: 50px;
@@ -53,9 +53,10 @@ select.form-control.genre-select{
    cursor: pointer;
 }
 
-.advanced-search-form .rc-slider-disabled {
+.MusicSearchForm .rc-slider-disabled {
    background-color: #444;
 }
-.advanced-search-form .rc-slider-disabled .rc-slider-rail{
+.MusicSearchForm .rc-slider-disabled .rc-slider-rail{
    background-color: #666;
 }
+
