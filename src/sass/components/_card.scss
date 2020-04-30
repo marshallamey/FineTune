@@ -1,3 +1,8 @@
+.card-group {
+  max-width: $grid-width;
+  margin: 0 auto;
+}
+
 .card {
   background-color: rgba($color-black, 1);
   border: .1rem solid $color-black;
@@ -18,7 +23,7 @@
 
   &__img-box {
     &__img {
-      width: 90%;
+      width: 100%;
     }
   }
 
@@ -28,7 +33,7 @@
 
   &__link-box {
     &__link { 
-      color: $color-lavender;
+      color: $color-primary-1;
       font-size: 5rem;
       padding: 1rem;
     }

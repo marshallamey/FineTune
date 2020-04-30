@@ -5,8 +5,6 @@ import thunk from "redux-thunk";
 import { applyMiddleware, createStore } from "redux";
 import { save, load } from "redux-localstorage-simple";
 import { BrowserRouter } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/index.css";
 import App from "./components/App";
 import reducers from "./reducers";
 

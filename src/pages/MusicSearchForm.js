@@ -8,7 +8,7 @@ import {
 } from "reactstrap";
 import SpotifyWebApi from "spotify-web-api-js";
 import { ToastContainer } from "react-toastify";
-import AttrSlider from "./AttrSlider";
+import AttrSlider from "../components/AttrSlider";
 import { 
     onGenreChange, handleSubmit, submitSongSearch 
 } from "../js/Helpers";
@@ -16,7 +16,6 @@ import * as actions from "../actions";
 
 import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
-import "../css/MusicSearchForm.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "rc-slider/assets/index.css";
 

@@ -11,10 +11,6 @@
 @import 'components/card';
 @import 'components/barChart';
 
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/app';
-@import 'layout/grid';
 
 @import 'pages/home';
 @import 'pages/search';
@@ -23,3 +19,8 @@
 @import 'vendors/fontawesome/fontawesome.scss';
 @import 'vendors/fontawesome/solid.scss';
 @import 'vendors/fontawesome/brands.scss';
+
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/app';
+@import 'layout/grid';

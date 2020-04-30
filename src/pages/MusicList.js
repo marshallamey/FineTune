@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { createNewPlaylist } from '../js/Helpers';
 import * as actions from '../actions';
-import Song from './Song';
-import SongButtons from './SongButtons';
-import '../css/MusicList.css';
+import Song from '../components/Song';
+import SongButtons from '../components/SongButtons';
+
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-notifications/lib/notifications.css';
 

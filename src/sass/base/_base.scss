@@ -16,25 +16,7 @@ body {
   height: 100%;
 }
 
-@media screen and (min-width: 782px) {
-  .header-tag{ margin-top: 2.2rem; }
-}
 
-@media screen and (max-width: 781px) {
-  .header-tag{ margin-top: -1rem; }
-}
-
-
-@media screen and (max-width: 540px) {
-  html { font-size: 40%;}
-  .header-tag { margin-top: -1rem; }
-
-}
-
-@media screen and (max-width: 320px) {
-  html { font-size: 30%;}
-  .header-tag { margin-top: -1rem; }
-}
 
 
 
