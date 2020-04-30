@@ -1,5 +1,5 @@
 # base image
-FROM node:alpine AS builder
+FROM node:14 AS builder
 # set working directory
 WORKDIR /app
 # copy source files to directory
@@ -9,7 +9,7 @@ RUN npm install
 RUN npm run build
 
 
-FROM node:alpine
+FROM node:14
 WORKDIR /app
 
 COPY --from=builder /app/build .
