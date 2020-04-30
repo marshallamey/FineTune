@@ -7,7 +7,10 @@ import { save, load } from "redux-localstorage-simple";
 import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import reducers from "./reducers";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
+
+
 const createStoreWithMiddleware = applyMiddleware(
     save(),
     thunk

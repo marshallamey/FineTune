@@ -20,6 +20,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "rc-slider/assets/index.css";
 import "../css/MusicSearchForm.css";
 
+
 const spotifyApi = new SpotifyWebApi();
 
 class MusicSearchForm extends Component {
@@ -108,7 +109,7 @@ class MusicSearchForm extends Component {
                         </Row>
 
                         <Row>
-                            <Col md="6" sm="12">
+                            <Col md="6">
                                 <AttrSlider
                                     name="duration"
                                     id="dur"
@@ -159,7 +160,7 @@ class MusicSearchForm extends Component {
                                     step={0.5}
                                 />
                             </Col>
-                            <Col md="6" sm="12">
+                            <Col md="6" >
                                 <AttrSlider
                                     name="popularity"
                                     id="pop"

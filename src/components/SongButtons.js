@@ -11,19 +11,19 @@ const SongButtons = (props) => {
     return (
         <Row className="song-btn-row">
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => playSong(props)}>
+                <button className="song-btn" onClick={() => playSong(props)}>
                 <i className="fas fa-play" />
-                </Button>
+                </button>
             </Col>
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => saveSong(props)}>
+                <button className="song-btn" onClick={() => saveSong(props)}>
                 <i className="fas fa-plus" />
-                </Button>
+                </button>
                 </Col>
             <Col className="song-btn-col" xs="4">
-                <Button className="song-btn" onClick={() => deleteSong(songs, index)}>
+                <button className="song-btn" onClick={() => deleteSong(songs, index)}>
                 <i className="fas fa-trash-alt" />
-                </Button>
+                </button>
             </Col>
         </Row>
     )

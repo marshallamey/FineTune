@@ -4,7 +4,7 @@
 }
 
 .card {
-  background-color: rgba($color-black, 1);
+  background-color: rgba($color-white, 1);
   border: .1rem solid $color-black;
   min-height: 50rem;
   padding: 1rem;
@@ -24,6 +24,7 @@
   &__img-box {
     &__img {
       width: 100%;
+      display: flex;
     }
   }
 

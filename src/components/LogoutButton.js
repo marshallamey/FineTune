@@ -8,7 +8,7 @@ export default function LogoutButton(props) {
     const { user } = props;
     return (
         <div>
-            <p>
+            <p className="login-info">
                 Logged in as {user.id ? ` ${user.id}` : ''}
             </p>
             <a href={`https://finetune.io/spotify/logout`} onClick={() => clear()}>

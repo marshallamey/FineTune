@@ -11,7 +11,7 @@ import { createNewPlaylist } from '../js/Helpers';
 import * as actions from '../actions';
 import Song from '../components/Song';
 import SongButtons from '../components/SongButtons';
-
+import '../css/MusicList.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-notifications/lib/notifications.css';
 
@@ -87,9 +87,9 @@ const MusicList = (props) => {
                     placeholder="Playlist Name" 
                     onChange={ e => setPlaylistName(e.target.value) }
                 />
-            <Button className="music-list-save-btn" onClick={() => createNewPlaylist(props, SongURIs)}>
+            <button className="music-list-save-btn" onClick={() => createNewPlaylist(props, SongURIs)}>
                 Save this playlist to Spotify
-            </Button>
+            </button>
             <Link className="music-list-search-link" to="/search">Start New Search</Link>
             <Row className="music-list">{Songs}</Row>          
             <Modal isOpen={modal} toggle={() => toggle()} className={className} size='lg'>

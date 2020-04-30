@@ -146,7 +146,7 @@ a:hover {
   margin: 0 auto; }
 
 .card {
-  background-color: black;
+  background-color: white;
   border: 0.1rem solid black;
   min-height: 50rem;
   padding: 1rem; }
@@ -155,7 +155,8 @@ a:hover {
     margin-bottom: 1rem;
     font-size: 2.5rem; }
   .card__img-box__img {
-    width: 100%; }
+    width: 100%;
+    display: flex; }
   .card__link-box__link {
     color: #66D58B;
     font-size: 5rem;
@@ -4825,6 +4826,13 @@ readers do not read off random characters that represent icons */
 .main-div {
   margin-top: 72px; }
 
+.login-info {
+  font-size: 1.2rem;
+  margin: 0;
+  display: inline;
+  vertical-align: bottom;
+  padding-right: 1.2rem; }
+
 .row:not(:last-child) {
   margin-bottom: 5rem; }
 
@@ -4833,9 +4841,9 @@ readers do not read off random characters that represent icons */
   display: table;
   clear: both; }
 
-.row [class^="col-"] {
+.row [class^="col-1"] {
   float: left; }
-  .row [class^="col-"]:not(:last-child) {
+  .row [class^="col-1"]:not(:last-child) {
     margin-right: 4rem; }
 
 .row .col {
