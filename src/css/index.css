@@ -1,3 +1,6 @@
+/* Main Primary color */
+/* Main Secondary color (1) */
+/* Main Secondary color (2) */
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +11,7 @@ html {
   height: 100%; }
 
 body {
-  background-color: #011c27;
+  background-color: black;
   box-sizing: border-box;
   background-color: #333;
   height: 100%; }
@@ -144,13 +147,14 @@ a:hover {
   opacity: .3; }
 
 .card {
-  background-color: #03254e;
+  background-color: black;
   border: 0.1rem solid black;
   min-height: 50rem;
   padding: 1rem; }
   .card__title {
-    color: #eb9fef;
-    margin-bottom: 1rem; }
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2.5rem; }
   .card__img-box__img {
     width: 90%; }
   .card__link-box__link {
@@ -217,8 +221,11 @@ a:hover {
   flex-direction: column;
   justify-content: center; }
 
+.main-div {
+  margin-top: 72px; }
+
 .row {
-  max-width: 114rem;
+  max-width: 135rem;
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 5rem; }
@@ -251,16 +258,89 @@ a:hover {
   .row .col-1-11 {
     width: calc((100% - 4rem * 10) / 11); }
 
-.section-portfolio {
-  background-color: #011c27;
-  padding: 3rem; }
+.home {
+  background-image: url("/img/ethan-cull-GSKx2Swh74A-unsplash.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%; }
+  .home__spacer {
+    height: 7.2rem;
+    min-height: 50px;
+    width: 100%;
+    clear: both; }
+  .home__content {
+    background-color: black;
+    padding: 3rem;
+    padding-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 35vh;
+    margin: 0 auto; }
+    .home__content--transparent {
+      padding: 8rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: black; }
 
-.section-about {
-  background-color: black;
-  color: #011c27; }
+.intro {
+  min-height: 50vh;
+  max-width: 1350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .intro__img {
+    height: 20rem;
+    width: 20rem;
+    margin: 3rem 0; }
+    .intro__img-text {
+      color: #1ed760;
+      margin-top: -3rem; }
+    .intro__img-box {
+      float: left;
+      margin: 0 3em; }
+  .intro__text {
+    color: #1ed760;
+    margin: 0 auto;
+    font-size: 2.4rem;
+    line-height: 5rem; }
+    .intro__text-box {
+      height: 100%;
+      margin: 5rem 0;
+      padding: 0 3rem; }
 
-.about {
-  width: 100%; }
+hr {
+  margin: 0 auto;
+  color: #1ed760;
+  border: 1px solid #444444;
+  margin-bottom: 6rem;
+  width: 60%; }
+
+.spotify-logo {
+  height: 25px;
+  margin-right: 10px; }
+
+.login {
+  /* Photo by Malte Wingen on Unsplash */
+  background-image: url("/img/malte-wingen-PDX_a_82obo-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding-left: 2vw;
+  padding-right: 60%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+  .login .btn__login {
+    margin: 0 auto;
+    padding: 1.3rem 1.7rem;
+    background-color: black;
+    border: none;
+    box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.5); }
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com

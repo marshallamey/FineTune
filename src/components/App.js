@@ -9,7 +9,7 @@ import MusicSearchForm from "./MusicSearchForm";
 import MusicList from "./MusicList";
 import Header from "./Header";
 import Footer from "./Footer";
-import Login from "./Login";
+import Home from "./Home";
 import {
     areTokensAvailable, connectToSpotify, isTokenExpired, getNewToken
 } from "../js/Helpers";
@@ -39,11 +39,11 @@ class App extends React.Component {
                 <Header user={user} />
                 <ToastContainer />
                 <BrowserRouter>
-                    <div>
+                    <div className='main-div'>
                         <Route
                             exact
                             path="/"
-                            render={() => <Login user={user} />} />
+                            render={() => <Home user={user} />} />
                         <Route
                             path="/search"
                             render={() => <MusicSearchForm />} />

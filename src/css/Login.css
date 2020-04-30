@@ -9,32 +9,6 @@
 }    
  
 
-.intro {
-    min-height: 50vh;
-    background:rgba(0, 0, 0, 1);
-    padding: 20px;
-    max-width: 1350px;
-    align-items: center;
-    
-}
-
-.intro-img-col {
-    height: 100%;
-}
-.intro-img {
-    height: 30vh;
-    width: 30vh;
-    margin: 3em 0;
-}
-.intro-text {
-    color: rgb(111, 222, 0);
-    font-size: 5.5vh;
-    line-height: 5.5vh;
-
-    margin: 0 auto;
-    
-
-}
 
 .play {
     /* Photo by Jacek Dylag on Unsplash */

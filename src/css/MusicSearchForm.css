@@ -11,8 +11,8 @@ select.form-control.genre-select{
    margin: 20px auto;
    width: 50%;
 }
-.search-btn {
-
+.advanced-search-form .row {
+   margin: 0 auto;
 }
 .genre-col{
    margin-bottom: 50px;
