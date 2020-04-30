@@ -12,7 +12,7 @@ const Home = (props) => {
     return (
         <div fluid className="home">
             
-            <div className="home__spacer"></div>
+            {/* <div className="home__spacer"></div> */}
             
             <section className="home__content home__content--transparent">
                 <h1 className='heading-secondary'>Discover music on your terms</h1>
@@ -20,10 +20,10 @@ const Home = (props) => {
 
             <section className='home__content'>
                 <div className='intro'>  
-                    <div className='intro__img-box'>
+                    {/* <div className='intro__img-box'>
                         <img className='intro__img' object src='/img/Spotify_Icon_RGB_Green.png' alt='Spotify logo' />
                         <div className='intro__img-text'>Powered by Spotify</div>
-                    </div>
+                    </div> */}
                     <div className='intro__text-box'>
                         <p className='intro__text'>FineTune is an advanced music search tool that allows you to find the exact music you need for any occassion. </p> 
                         <p className='intro__text'>As a Spotify user, you can look for songs of a specific length, key, tempo, or even mood.  
@@ -35,7 +35,7 @@ const Home = (props) => {
                 <div className="row">
                     <div className="card-group">
                         <div className="col-1-3">
-                        <div className="card-title">Music in your key</div>
+                        <div className="card__title">Music in your key</div>
                             <div className="card">
                                
                                 <div className="card__img-box">
@@ -44,7 +44,7 @@ const Home = (props) => {
                             </div>
                         </div>
                         <div className="col-1-3">
-                        <div className="card-title">Music at your pace</div>
+                        <div className="card__title">Music at your pace</div>
                             <div className="card">
                                 
                                 <div className="card__img-box">
@@ -53,7 +53,7 @@ const Home = (props) => {
                             </div>
                         </div>
                         <div className="col-1-3">
-                        <div className="card-title">Music for your mood</div>
+                        <div className="card__title">Music for your mood</div>
                             <div className="card">
                             
                             <div className="card__img-box">
