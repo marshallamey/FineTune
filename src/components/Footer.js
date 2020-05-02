@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 const Footer = (props) => {
-    const { user } = props;
     return (
         <footer className="App-footer">
             <a href="/">About</a>
@@ -14,8 +13,8 @@ const Footer = (props) => {
     );
 };
 
-Footer.propTypes = {
-  user: PropTypes.shape({}).isRequired,
-};
+// Footer.propTypes = {
+//   user: PropTypes.shape({}).isRequired,
+// };
 
 export default Footer;

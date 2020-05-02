@@ -1,0 +1,95 @@
+.music-list {
+    margin: 2rem auto;
+    padding: 0;
+
+    &__input {
+        font-size: 1.4rem;
+        margin: 2rem auto;
+        width: 70%;
+    }
+
+    &__btn--save {
+        background-color: #ff2525;
+        display: block;
+        padding: .5rem 1rem;
+        margin: 1rem auto;
+        &:hover {
+            background-color: #666;
+            padding: .5rem 1rem;
+        }
+    }
+
+    &__link {
+        font-size: 0.8em;
+        color: #fcfa81;
+        padding-bottom: 2rem;
+        &:hover {
+            text-decoration: none;
+            color: #666;
+        }
+    }
+
+    &__songs {
+        background: #333333;
+        min-width: 3.5rem; 
+        width: 90%;
+        margin: 2rem auto;
+    }
+
+    &__modal {
+        .modal-title {
+            width: 100%;
+            text-align: center;
+            color: $color-black;
+        }
+    }
+
+}
+
+.song-card {
+    height: 7rem;
+    text-align: left;
+    padding: 0;
+    margin-left: .3rem;
+    display: flex;
+    align-items: center;
+    border-top: .2rem solid #fff;
+    border-bottom: .1rem solid #fff;
+    border-left: .2rem solid #fff;
+    border-right: .2rem solid #fff;
+    border-radius: 0;
+    &:hover { color: white; }
+
+    &__album {
+        padding-left: .2rem;
+        &-cover {
+            float: left;
+            margin-right: 2rem;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__info { 
+        padding: 0; 
+        &--btns {
+            padding: 0;
+            text-align: center;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

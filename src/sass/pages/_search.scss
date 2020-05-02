@@ -1,4 +1,6 @@
 .music-search-form { 
+   max-width: 1350px;
+   margin: 0 auto;
     padding: 20px; 
 
     &__title {
@@ -16,9 +18,21 @@
 select.form-control.genre-select{
    height: 300px;
 }
+
+.advanced-search-form {
+   padding-top: 3rem;
+   padding-bottom: 3rem;
+   
+   .genre-select {
+      font-size: 1.4rem;
+   }
+   &__submit-btn {
+      margin: 0 auto;
+   }
+}
 .basic-search-form {
-   padding-top: 20px;
-   padding-bottom: 20px;
+   padding-top: 3rem;
+   padding-bottom: 3rem;
 }
 .search-input {
    margin: 20px auto;
@@ -71,5 +85,9 @@ select.form-control.genre-select{
 }
 .music-search-form .rc-slider-disabled .rc-slider-rail{
    background-color: #666;
+}
+
+.slider-checkbox {
+   margin-left: -2rem;
 }
 

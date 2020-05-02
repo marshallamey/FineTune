@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "rc-slider/assets/index.css";
-import "../css/MusicSearchForm.css";
+// import "../css/MusicSearchForm.css";
 
 
 const spotifyApi = new SpotifyWebApi();
@@ -91,7 +91,7 @@ class MusicSearchForm extends Component {
                                 ))}
                             </Input>
                         </FormGroup>
-                        <Button type="submit"> Find Music </Button>
+                        <Button type="submit" color="danger"> Find Music </Button>
                     </Col>
 
                     {/* ADJUST SONG ATTRIBUTES */}
@@ -102,7 +102,7 @@ class MusicSearchForm extends Component {
                                     Search Options
                                 </h5>
                                 <FormText>*Optional</FormText>
-                                <Button onClick={() => resetAttributes()}>
+                                <Button color="danger" onClick={() => resetAttributes()}>
                                     Reset
                                 </Button>
                             </div>
@@ -211,9 +211,10 @@ class MusicSearchForm extends Component {
                                     step={1}
                                 />
                             </Col>
+                            <Button className="advanced-search-form__submit-btn" type="submit" color="danger"> Find Music </Button>
                         </Row>
 
-                        <Button type="submit"> Find Music </Button>
+                        
                     </Col>
                 </Row>
             </Form>
@@ -229,7 +230,7 @@ class MusicSearchForm extends Component {
                 <h1 className="music-search-title">Music Search</h1>
 
                 {/* SEARCH TYPE BUTTONS */}
-                <ButtonGroup className="search-type-buttons" size="sm">
+                <ButtonGroup className="search-type-buttons">
                     <Button 
                         className="search-type-button-basic" 
                         color={ this.state.searchType === "basic"? 'danger':'secondary' }

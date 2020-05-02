@@ -259,6 +259,8 @@ hr {
     box-shadow: 3px 2px 7px rgba(0, 0, 0, 0.5); }
 
 .music-search-form {
+  max-width: 1350px;
+  margin: 0 auto;
   padding: 20px; }
   .music-search-form__title {
     color: blue; }
@@ -269,9 +271,17 @@ hr {
 select.form-control.genre-select {
   height: 300px; }
 
+.advanced-search-form {
+  padding-top: 3rem;
+  padding-bottom: 3rem; }
+  .advanced-search-form .genre-select {
+    font-size: 1.4rem; }
+  .advanced-search-form__submit-btn {
+    margin: 0 auto; }
+
 .basic-search-form {
-  padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-top: 3rem;
+  padding-bottom: 3rem; }
 
 .search-input {
   margin: 20px auto;
@@ -319,6 +329,71 @@ select.form-control.genre-select {
 
 .music-search-form .rc-slider-disabled .rc-slider-rail {
   background-color: #666; }
+
+.slider-checkbox {
+  margin-left: -2rem; }
+
+.music-list {
+  margin: 2rem auto;
+  padding: 0; }
+  .music-list__input {
+    font-size: 1.4rem;
+    margin: 2rem auto;
+    width: 70%; }
+  .music-list__btn--save {
+    background-color: #ff2525;
+    display: block;
+    padding: .5rem 1rem;
+    margin: 1rem auto; }
+    .music-list__btn--save:hover {
+      background-color: #666;
+      padding: .5rem 1rem; }
+  .music-list__link {
+    font-size: 0.8em;
+    color: #fcfa81;
+    padding-bottom: 2rem; }
+    .music-list__link:hover {
+      text-decoration: none;
+      color: #666; }
+  .music-list__songs {
+    background: #333333;
+    min-width: 3.5rem;
+    width: 90%;
+    margin: 2rem auto; }
+  .music-list__modal .modal-title {
+    width: 100%;
+    text-align: center;
+    color: black; }
+
+.song-card {
+  height: 7rem;
+  text-align: left;
+  padding: 0;
+  margin-left: .3rem;
+  display: flex;
+  align-items: center;
+  border-top: .2rem solid #fff;
+  border-bottom: .1rem solid #fff;
+  border-left: .2rem solid #fff;
+  border-right: .2rem solid #fff;
+  border-radius: 0; }
+  .song-card:hover {
+    color: white; }
+  .song-card__album {
+    padding-left: .2rem; }
+    .song-card__album-cover {
+      float: left;
+      margin-right: 2rem; }
+  .song-card__title {
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis; }
+  .song-card__info {
+    padding: 0; }
+    .song-card__info--btns {
+      padding: 0;
+      text-align: center; }
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com

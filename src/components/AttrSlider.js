@@ -11,7 +11,6 @@ import {
     capitalize, millisToMinutesAndSeconds, convertKey,
 } from '../js/Helpers';
 import * as actions from '../actions';
-import '../css/MusicSearchForm.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'rc-slider/assets/index.css';
 
@@ -83,7 +82,7 @@ const AttrSlider = (props) => {
         <FormGroup>
             {
                 id === 'sig' || id === 'key' || id === 'mode'
-                ? <Input type="checkbox" onChange={() => toggleAttr(props, name)} /> : ''
+                ? <Input className="slider-checkbox" type="checkbox" onChange={() => toggleAttr(props, name)} /> : ''
             }
             <Label for={name}>
                 {id === 'sig' ? `Time ${capitalize(name)}` : `${capitalize(name)}`}
