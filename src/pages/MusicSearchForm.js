@@ -58,12 +58,8 @@ class MusicSearchForm extends Component {
                     type="text" 
                     placeholder="Enter a song" 
                     onChange={ e => setKeyword(e.target.value) }
-                />
-                <button 
-                    className="btn btn__submit" 
-                    color="danger" 
-                    type="submit"
-                > Search </button>
+                /><br/>
+                <Button type="submit" color="danger"> Search </Button>
             </div>
         );
 
