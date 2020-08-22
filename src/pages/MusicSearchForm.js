@@ -16,7 +16,6 @@ import * as actions from "../actions";
 
 import "react-toastify/dist/ReactToastify.css";
 import "react-notifications/lib/notifications.css";
-import "@fortawesome/fontawesome-free/css/all.css";
 import "rc-slider/assets/index.css";
 // import "../css/MusicSearchForm.css";
 

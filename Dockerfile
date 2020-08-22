@@ -15,4 +15,4 @@ WORKDIR /app
 COPY --from=builder /app/build .
 
 RUN npm install -g serve
-CMD ["serve", "-p", "80", "-s", "."]
+CMD ["serve", "-p", "3000", "-s", "."]

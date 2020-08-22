@@ -11,7 +11,6 @@ import {
     capitalize, millisToMinutesAndSeconds, convertKey,
 } from '../js/Helpers';
 import * as actions from '../actions';
-import '@fortawesome/fontawesome-free/css/all.css';
 import 'rc-slider/assets/index.css';
 
 const { createSliderWithTooltip } = Slider;
