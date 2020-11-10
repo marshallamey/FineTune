@@ -11,7 +11,7 @@ export default function LogoutButton(props) {
             <p className="login-info">
                 Logged in as {user.id ? ` ${user.id}` : ''}
             </p>
-            <a href={`https://finetune.io/spotify/logout`} onClick={() => clear()}>
+            <a href={`http://finetune.io/spotify/logout`} onClick={() => clear()}>
                 <Button className="logout-button" outline onClick={() => clear()}>
                     <img className="spotify-logo" src="/img/spotify-logo.png" alt="spotify-logo.JPG" />
                     Logout
