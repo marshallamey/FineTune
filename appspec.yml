@@ -1,0 +1,9 @@
+# base image
+FROM node:alpine AS builder
+# set working directory
+WORKDIR /app
+# copy source files to directory
+COPY . .
+# create production build
+RUN npm install
+CMD ["node", "server.js"]

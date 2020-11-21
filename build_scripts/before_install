@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ "$DEPLOYMENT_GROUP_NAME" == "frontend-servers" ]
+then   
+    sudo rm -rfd /home/ec2-user/marshallamey.com/*
+    sudo rm -rfd /var/www/marshallamey.com/public_html/*     
+fi
+

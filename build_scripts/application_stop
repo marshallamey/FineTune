@@ -1,0 +1,15 @@
+#!/bin/bash
+source /home/ec2-user/.bash_profile
+export PATH=$PATH:/home/ec2-user/.nvm/versions/node/v14.15.0/bin/
+export HOME=/home/ec2-user
+
+if [ "$DEPLOYMENT_GROUP_NAME" == "frontend-servers" ]
+then
+    sudo service httpd stop    
+else
+    isExistApp=`pm2 pid marshallamey.com`
+    if [[ -n  $isExistApp ]]; then
+        pm2 delete marshallamey.com
+    fi
+fi
+
