@@ -171,8 +171,8 @@ app.get('/spotify/refresh_token', (req, res) => {
 //     });
 // }
 
-const PORT = process.env.NODE_PORT || 8888;
-console.log(`Authentication Server started: Listening on ${ PORT }`);
+const PORT = process.env.NODE_PORT || 8081;
+console.log(`FineTune Server started: Listening on ${ PORT }`);
 app.listen(PORT);
 
 /* eslint-enable */
