@@ -5,7 +5,7 @@ const router = express.Router();
 // AUTH ROUTES
  
 /* FineTune sends request for authorization to Spotify */
-router.get('/spotify/login', (req, res) => {   
+router.get('/login', (req, res) => {   
   const scope = 'user-read-private playlist-modify-public user-library-modify user-modify-playback-state user-read-playback-state user-read-currently-playing';
   const stateValue = generateRandomString(16);
   res.cookie(stateKey, stateValue);  
@@ -21,13 +21,13 @@ router.get('/spotify/login', (req, res) => {
 });
 
 /* FineTune removes authorization to Spotify */
-router.get('/spotify/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   res.clearCookie(stateKey);
   res.redirect('http://finetune.io/');
 });
 
 /* Finetune requests refresh and access tokens after checking the state parameter */
-router.get('/spotify/callback', (req, res) => {
+router.get('/callback', (req, res) => {
   const code = req.query.code || null;
   const state = req.query.state || null;
   const storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -69,7 +69,7 @@ router.get('/spotify/callback', (req, res) => {
 });
 
 /* FineTune requests access token from Spotify using refresh token */
-router.get('/spotify/refresh_token', (req, res) => {
+router.get('/refresh_token', (req, res) => {
   const { refresh_token } = req.query;
   const authOptions = {
       url: 'https://accounts.spotify.com/api/token',
