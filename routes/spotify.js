@@ -3,6 +3,22 @@ const querystring = require('querystring');
 const request = require('request');
 const express = require('express');
 const router = express.Router();
+const AWS = require('aws-sdk');
+
+/* GET ENVIRONMENT VARIABLES */
+AWS.config.region = 'us-west-2';
+const ssm = new AWS.SSM();
+const vars = {
+    SPOTIFY_CLIENT_ID: '',
+    SPOTIFY_CLIENT_SECRET: '',
+    SPOTIFY_REDIRECT_URI: '',
+    SPOTIFY_CALLBACK_URI: '',
+};
+for (const v in vars) {
+    let value = ssm.getParameter({ Name: `/finetune.io/${v}`, WithDecryption: true }).promise()
+    value.then(res => vars[v] = res.Parameter.Value)
+    .catch(err => console.log("ERROR retrieving env variables from AWS:", err))
+}
 
 const stateKey = 'spotify_auth_state';
 /** Generate a random string containing numbers and letters **/

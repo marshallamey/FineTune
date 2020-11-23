@@ -12,7 +12,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path')
 const cors = require('cors');
-const AWS = require('aws-sdk');
 
 const PORT = process.env.NODE_PORT || 8081;
 
@@ -21,20 +20,6 @@ server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true, }))
 server.use(cors())
 server.use(cookieParser());
-/* GET ENVIRONMENT VARIABLES */
-AWS.config.region = 'us-west-2';
-const ssm = new AWS.SSM();
-const vars = {
-    SPOTIFY_CLIENT_ID: '',
-    SPOTIFY_CLIENT_SECRET: '',
-    SPOTIFY_REDIRECT_URI: '',
-    SPOTIFY_CALLBACK_URI: '',
-};
-for (const v in vars) {
-    let value = ssm.getParameter({ Name: `/finetune.io/${v}`, WithDecryption: true }).promise()
-    value.then(res => vars[v] = res.Parameter.Value)
-    .catch(err => console.log("ERROR retrieving env variables from AWS:", err))
-}
 
 /* DETERMINE ROUTES */   
 server.use('/spotify', require('./routes/spotify'))
