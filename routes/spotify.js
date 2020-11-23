@@ -1,4 +1,6 @@
 // routes/spotify.js
+const querystring = require('querystring');
+const request = require('request');
 const express = require('express');
 const router = express.Router();
 

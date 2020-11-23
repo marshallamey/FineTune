@@ -45,11 +45,8 @@ if (process.env.NODE_ENV === 'production') {
     server.use(express.static(root));
     server.get("*", (req, res) => {
         res.sendFile('index.html', { root });
-    })
-} else {
-server.use(express.static(`${__dirname}/public`))
-
-}
+    })} 
+else server.use(express.static(`${__dirname}/public`))
 
 /* LISTEN FOR TRAFFIC */
 server.listen(PORT);
