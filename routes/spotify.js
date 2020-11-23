@@ -2,8 +2,18 @@
 const express = require('express');
 const router = express.Router();
 
+/** Generate a random string containing numbers and letters **/
+const generateRandomString = (length) => {
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (let i = 0; i < length; i += 1) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
+
 // AUTH ROUTES
- 
 /* FineTune sends request for authorization to Spotify */
 router.get('/login', (req, res) => {   
   const scope = 'user-read-private playlist-modify-public user-library-modify user-modify-playback-state user-read-playback-state user-read-currently-playing';
