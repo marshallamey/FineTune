@@ -14,13 +14,13 @@ const path = require('path')
 const cors = require('cors');
 const AWS = require('aws-sdk');
 
-const stateKey = 'spotify_auth_state';
 const PORT = process.env.NODE_PORT || 8081;
 
 const server = express();
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true, }))
-
+server.use(cors())
+server.use(cookieParser());
 /* GET ENVIRONMENT VARIABLES */
 AWS.config.region = 'us-west-2';
 const ssm = new AWS.SSM();
@@ -48,8 +48,7 @@ if (process.env.NODE_ENV === 'production') {
     })
 } else {
 server.use(express.static(`${__dirname}/public`))
-    .use(cors())
-    .use(cookieParser());
+
 }
 
 /* LISTEN FOR TRAFFIC */

@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
+const stateKey = 'spotify_auth_state';
 /** Generate a random string containing numbers and letters **/
 const generateRandomString = (length) => {
   let text = '';
