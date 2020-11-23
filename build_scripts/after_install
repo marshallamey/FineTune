@@ -1,14 +1,10 @@
 #!/bin/bash
 export PATH=$PATH:/home/ec2-user/.nvm/versions/node/v14.15.0/bin/
+cd /home/ec2-user/finetune.io/
+npm install
+cd client 
+npm install
+npm run build
 
-if [ "$DEPLOYMENT_GROUP_NAME" == "frontend-servers" ]
-then
-    cd /home/ec2-user/marshallamey.com/client 
-    npm install
-    npm run build
-    sudo mv build/* /var/www/marshallamey.com/public_html
-else
-    cd /home/ec2-user/marshallamey.com/server 
-    npm install
-fi
+
 

@@ -3,9 +3,11 @@ source /home/ec2-user/.bash_profile
 export PATH=$PATH:/home/ec2-user/.nvm/versions/node/v14.15.0/bin/
 export HOME=/home/ec2-user
 
-if [ "$DEPLOYMENT_GROUP_NAME" == "frontend-servers" ]
-then
-    sudo service httpd start
-else
-    pm2 start /home/ec2-user/marshallamey.com/server/server.js --name marshallamey.com
-fi
+pm2 startup
+pm2 ping
+echo pid is `pm2 pid finetune`
+notStarted=`pm2 pid finetune`
+if [ -z "$notStarted" ]
+ then NODE_ENV=production pm2 start /home/ec2-user/apps.config.js  --only finetune --env production
+ else pm2 restart finetune
+fi 

@@ -1,9 +1,19 @@
-# base image
-FROM node:alpine AS builder
-# set working directory
-WORKDIR /app
-# copy source files to directory
-COPY . .
-# create production build
-RUN npm install
-CMD ["node", "server.js"]
+version: 0.0
+os: linux
+files:
+ - source: /
+   destination: /home/ec2-user/finetune.io
+
+hooks:
+  ApplicationStop:
+    - location: build_scripts/application_stop
+      timeout: 300
+  BeforeInstall:
+    - location: build_scripts/before_install
+      timeout: 300
+  AfterInstall:
+    - location: build_scripts/after_install
+      timeout: 300
+  ApplicationStart:
+    - location: build_scripts/application_start
+      timeout: 300
