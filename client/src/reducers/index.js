@@ -11,6 +11,7 @@ import PopoverReducer from './PopoverReducer';
 import RedirectReducer from './RedirectReducer';
 import KeywordReducer from './KeywordReducer';
 import NameReducer from './NameReducer';
+import PlaylistReducer from './PlaylistReducer';
 
 export default combineReducers({
   user: UserReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   popovers: PopoverReducer,
   redirect: RedirectReducer,
   keyword: KeywordReducer,
-  playlistName: NameReducer
+  playlistName: NameReducer,
+  playlists: PlaylistReducer
 });

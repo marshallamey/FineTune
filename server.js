@@ -8,30 +8,31 @@
 
 /* eslint-disable camelcase */
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const express = require('express');
+const bodyParser = require('body-parser')
+const express = require('express')
 const path = require('path')
-const cors = require('cors');
+const cors = require('cors')
 
-const PORT = process.env.NODE_PORT || 8081;
+const PORT = process.env.NODE_PORT || 8081
+const server = express()
 
-const server = express();
+/* CONFIGURE SERVER */   
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true, }))
+server.use(cookieParser())
 server.use(cors())
-server.use(cookieParser());
 
-/* DETERMINE ROUTES */   
+/* CONFIGURE ROUTES */   
 server.use('/spotify', require('./routes/spotify'))
 
-/* DETERMINE NODE ENVIRONMENT */
+/* CONFIGURE NODE ENVIRONMENT */
 if (process.env.NODE_ENV === 'production') {
     const root = path.join(__dirname, 'client', 'build')
     server.use(express.static(root));
     server.get("*", (req, res) => {
         res.sendFile('index.html', { root });
     })} 
-else server.use(express.static(`${__dirname}/public`))
+else server.use(express.static(path.join(__dirname, 'client', 'public')))
 
 /* LISTEN FOR TRAFFIC */
 server.listen(PORT);

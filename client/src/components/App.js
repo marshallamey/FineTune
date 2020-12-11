@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 import MusicSearchForm from "../pages/MusicSearchForm";
 import MusicList from "../pages/MusicList";
+import FineTune from '../pages/FineTune';
 import Header from "./Header";
 import Footer from "./Footer";
 import Home from "../pages/Home";
@@ -48,6 +49,9 @@ class App extends React.Component {
                         <Route
                             path="/search"
                             render={() => <MusicSearchForm />} />
+                        <Route
+                            path="/playlists"
+                            render={() => <FineTune />} />
                         <Route 
                             path="/results" 
                             render={() => <MusicList />} />

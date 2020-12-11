@@ -14,8 +14,9 @@ const vars = {
     SPOTIFY_REDIRECT_URI: '',
     SPOTIFY_CALLBACK_URI: '',
 };
+const secretsPath = process.env.NODE_ENV === 'production' ? '/finetune.io' : '/finetune.io/dev'
 for (const v in vars) {
-    let value = ssm.getParameter({ Name: `/finetune.io/${v}`, WithDecryption: true }).promise()
+    let value = ssm.getParameter({ Name: `${secretsPath}/${v}`, WithDecryption: true }).promise()
     value.then(res => vars[v] = res.Parameter.Value)
     .catch(err => console.log("ERROR retrieving env variables from AWS:", err))
 }
@@ -35,13 +36,14 @@ const generateRandomString = (length) => {
 // AUTH ROUTES
 /* FineTune sends request for authorization to Spotify */
 router.get('/login', (req, res) => {   
-  const scope = 'user-read-private playlist-modify-public user-library-modify user-modify-playback-state user-read-playback-state user-read-currently-playing';
+    console.log('hello?')
+  const scope = 'user-read-private playlist-modify-public user-library-modify user-library-read user-modify-playback-state user-read-playback-state user-read-currently-playing';
   const stateValue = generateRandomString(16);
   res.cookie(stateKey, stateValue);  
   res.redirect(`https://accounts.spotify.com/authorize?${
       querystring.stringify({
       response_type: 'code',
-      show_dialog: false,
+      show_dialog: true,
       client_id: vars.SPOTIFY_CLIENT_ID,
       scope,
       redirect_uri: vars.SPOTIFY_REDIRECT_URI,
@@ -52,7 +54,7 @@ router.get('/login', (req, res) => {
 /* FineTune removes authorization to Spotify */
 router.get('/logout', (req, res) => {
   res.clearCookie(stateKey);
-  res.redirect('http://finetune.io/');
+  process.env.NODE_ENV === 'prod' ? res.redirect('http://finetune.io') : res.redirect('http://localhost:3000')
 });
 
 /* Finetune requests refresh and access tokens after checking the state parameter */

@@ -102,6 +102,78 @@ export const getDevices = accessToken => async (dispatch) => {
   dispatch({ type: 'GET_DEVICES', payload: allDevices });
 };
 
+// get all playlists
+export const getPlaylists = accessToken => async (dispatch) => {
+  spotifyApi.setAccessToken(accessToken);
+  let ap = []
+  const allPlaylists = await spotifyApi.getUserPlaylists({limit: 50, offset: 0 })
+    .then(res => {
+      ap.push(...res.items)
+      const totalPages = Math.ceil(res.total/res.limit)
+      for (let i=1; i<totalPages; i++) {
+        spotifyApi.getUserPlaylists({limit: 50, offset: i*50 })
+        .then(playlists => ap.push(...playlists.items))
+      }
+    })
+    .then(() => ap)
+    .catch(err => console.log('getPlaylists()::', err))
+    console.log('returning playlists', allPlaylists)
+  dispatch({ type: 'GET_PLAYLISTS', payload: allPlaylists });
+  return allPlaylists
+}
+
+    // Input: Array of Spotify playlists
+    // Output: Array of Spotify tracks from all the playlists + any saved tracks
+    // ** To only retrieve liked songs (saved tracks), provide no argument
+async function getPlaylistTracks(playlists) {
+  let x = []
+  for (let i=0; i<playlists.length; i++) {
+    const q = await spotifyApi.getPlaylistTracks(playlists[i].owner.id, playlists[i].id, {limit: 100, offset: 0 })
+      .then(async res => {
+        const allTracks = []
+        allTracks.push(...res.items)
+        const totalPages = Math.ceil(res.total/res.limit)
+        for (let j=1; j<totalPages; j++) {
+          const moreTracks = await spotifyApi.getPlaylistTracks(playlists[j].owner.id, playlists[j].id, {limit: 100, offset: i*50 })
+          allTracks.push(...moreTracks.items)
+        }
+        return allTracks
+      })
+      .catch(err => console.log('getAllTracksFromPlaylist()::', err))   
+      console.log('q=', q)
+      x.push(...q)
+  }
+  console.log('x=', x)
+  return x
+}
+    
+async function getSavedTracks() {
+  
+  // Look for saved tracks first
+  const p = await spotifyApi.getMySavedTracks({limit: 50, offset: 0 })
+    .then(async res => {
+      const allTracks = []
+      allTracks.push(...res.items)
+      const totalPages = Math.ceil(res.total/res.limit)
+      for (let i=1; i<totalPages; i++) {
+        const moreTracks = await spotifyApi.getMySavedTracks({limit: 50, offset: i*50 })
+        allTracks.push(...moreTracks.items)
+      }
+      return allTracks
+    })
+    .catch(err => console.log('getAllTracksFromPlaylist()::', err))   
+    console.log(p)
+    return p  
+  }
+
+export const getTracks = (accessToken, playlists) => async (dispatch) => {
+  let p = await getPlaylists(accessToken)
+  let tracks = await getPlaylistTracks(playlists)
+  let savedTracks = await getSavedTracks()
+  dispatch({ type: 'GET_TRACKS', payload: [...tracks, ...savedTracks] });
+  return [...tracks, ...savedTracks]
+}
+
 export const refreshTokens = spotifyTokens => async (dispatch) => {
   console.log('FINETUNEAPP(actions.refreshTokens)::  Attempting to refresh access token...');
   console.log('FINETUNEAPP(actions.refreshTokens):: Old Access Token ==> ', spotifyTokens.access_token);

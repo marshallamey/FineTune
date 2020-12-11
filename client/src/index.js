@@ -12,7 +12,7 @@ import './css/index.css';
 
 
 const createStoreWithMiddleware = applyMiddleware(
-    save(),
+    save({ ignoreStates: ["songs"] }),
     thunk
     // Saving done here
 )(createStore);
