@@ -2,6 +2,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import {AuthServerURL} from '../js/Helpers.js';
 
+
 const spotifyApi = new SpotifyWebApi();
 
 export const selectGenre = genres => ({
@@ -105,73 +106,87 @@ export const getDevices = accessToken => async (dispatch) => {
 // get all playlists
 export const getPlaylists = accessToken => async (dispatch) => {
   spotifyApi.setAccessToken(accessToken);
-  let ap = []
+  let plist = []
   const allPlaylists = await spotifyApi.getUserPlaylists({limit: 50, offset: 0 })
-    .then(res => {
-      ap.push(...res.items)
-      const totalPages = Math.ceil(res.total/res.limit)
-      for (let i=1; i<totalPages; i++) {
+    .then(playlists => {
+      plist.push(...playlists.items)
+      const totalPages = Math.ceil(playlists.total/playlists.limit)
+      for (let i = 1; i < totalPages; i++) {
         spotifyApi.getUserPlaylists({limit: 50, offset: i*50 })
-        .then(playlists => ap.push(...playlists.items))
+        .then(morePlaylists => plist.push(...morePlaylists.items))
       }
     })
-    .then(() => ap)
+    .then(() => plist)
     .catch(err => console.log('getPlaylists()::', err))
-    console.log('returning playlists', allPlaylists)
   dispatch({ type: 'GET_PLAYLISTS', payload: allPlaylists });
   return allPlaylists
+}
+
+async function addAudioFeatures(tracks) {
+  const trackIds = tracks.items.map(x => x.track.id);
+  const allTracksWithFeatures = await spotifyApi.getAudioFeaturesForTracks(trackIds)
+    .then(res => {
+      const tracksWithFeatures = tracks.items.map((track, index) => {
+        const trackWithFeatures = track.track;
+        trackWithFeatures.audio_features = res.audio_features[index];
+        return trackWithFeatures;
+      });
+      return tracksWithFeatures
+    })
+    return allTracksWithFeatures
 }
 
     // Input: Array of Spotify playlists
     // Output: Array of Spotify tracks from all the playlists + any saved tracks
     // ** To only retrieve liked songs (saved tracks), provide no argument
 async function getPlaylistTracks(playlists) {
-  let x = []
-  for (let i=0; i<playlists.length; i++) {
-    const q = await spotifyApi.getPlaylistTracks(playlists[i].owner.id, playlists[i].id, {limit: 100, offset: 0 })
-      .then(async res => {
+  let allPlaylistTracks = []
+  for (let i = 0; i < playlists.length; i++) {
+    const playlistTracks = await spotifyApi.getPlaylistTracks(playlists[i].owner.id, playlists[i].id, {limit: 100, offset: 0 })
+      .then( async tracks => {
         const allTracks = []
-        allTracks.push(...res.items)
-        const totalPages = Math.ceil(res.total/res.limit)
+        const tracksWithFeatures = await addAudioFeatures(tracks)
+        allTracks.push(...tracksWithFeatures)
+        const totalPages = Math.ceil(tracks.total/tracks.limit)
         for (let j=1; j<totalPages; j++) {
           const moreTracks = await spotifyApi.getPlaylistTracks(playlists[j].owner.id, playlists[j].id, {limit: 100, offset: i*50 })
-          allTracks.push(...moreTracks.items)
+          const moreTracksWithFeatures = await addAudioFeatures(moreTracks)
+        allTracks.push(...moreTracksWithFeatures)
         }
         return allTracks
       })
-      .catch(err => console.log('getAllTracksFromPlaylist()::', err))   
-      console.log('q=', q)
-      x.push(...q)
+      .catch(err => console.log('getPlaylistTracks()::', err))   
+      allPlaylistTracks.push(...playlistTracks)
   }
-  console.log('x=', x)
-  return x
+  return allPlaylistTracks
 }
     
 async function getSavedTracks() {
-  
-  // Look for saved tracks first
-  const p = await spotifyApi.getMySavedTracks({limit: 50, offset: 0 })
-    .then(async res => {
+  const allSavedTracks = await spotifyApi.getMySavedTracks({limit: 50, offset: 0 })
+    .then( async tracks => {
       const allTracks = []
-      allTracks.push(...res.items)
-      const totalPages = Math.ceil(res.total/res.limit)
+      const tracksWithFeatures = await addAudioFeatures(tracks)
+      allTracks.push(...tracksWithFeatures)
+      const totalPages = Math.ceil(tracks.total/tracks.limit)
       for (let i=1; i<totalPages; i++) {
         const moreTracks = await spotifyApi.getMySavedTracks({limit: 50, offset: i*50 })
-        allTracks.push(...moreTracks.items)
+        const moreTracksWithFeatures = await addAudioFeatures(moreTracks)
+        allTracks.push(...moreTracksWithFeatures)
       }
       return allTracks
     })
-    .catch(err => console.log('getAllTracksFromPlaylist()::', err))   
-    console.log(p)
-    return p  
+    .catch(err => {console.log('getSavedTracks()::', err); return []})   
+    return allSavedTracks 
   }
 
 export const getTracks = (accessToken, playlists) => async (dispatch) => {
   let p = await getPlaylists(accessToken)
   let tracks = await getPlaylistTracks(playlists)
   let savedTracks = await getSavedTracks()
-  dispatch({ type: 'GET_TRACKS', payload: [...tracks, ...savedTracks] });
-  return [...tracks, ...savedTracks]
+  const allSongs = [...tracks, ...savedTracks]
+  console.log('FINISHED!! allTracks', allSongs)
+  dispatch({ type: 'GET_TRACKS', payload: allSongs });
+  return allSongs
 }
 
 export const refreshTokens = spotifyTokens => async (dispatch) => {

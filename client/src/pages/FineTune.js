@@ -41,7 +41,6 @@ class FineTune extends Component {
     componentDidMount() {
         // Make sure Spotify API has access token
         const { spotifyTokens, getTracks, getPlaylists, playlists, songs } = this.props;
-        console.log('PROPS1', playlists, songs)
         !spotifyApi.getAccessToken() && spotifyApi.setAccessToken(spotifyTokens.access_token)
         if(!playlists.length || !songs.length) getPlaylists(spotifyTokens.access_token)
           .then(lists => getTracks(spotifyTokens.access_token, lists))
@@ -49,18 +48,17 @@ class FineTune extends Component {
 
 
     render() {
-        const {
-            allGenres, selectedGenres, resetAttributes, setKeyword
-        } = this.props;
-        const playlists = this.state.playlists.map( playlist => (
+      const { playlists, songs } = this.props;
+
+        const Playlists = playlists.map( playlist => (
           <div>
             {playlist.name}
             {/* <img className='playlist-img' src={playlist.images[0].url} width='60' height='60'/> */}
           </div>
         ))
-        const tracks = this.state.tracks.map( tracks => (
+        const tracks = songs.map( track => (
           <div>
-            {tracks.track.name}
+            {track.name}
             {/* <img className='playlist-img' src={playlist.images[0].url} width='60' height='60'/> */}
           </div>
         ))
@@ -68,7 +66,7 @@ class FineTune extends Component {
         const playlistList = (
             <Container className="basic-search-form" onSubmit={ e => submitSongSearch(this.props, e) }>
          
-                {playlists}
+                {Playlists}
             
             </Container>
         );
