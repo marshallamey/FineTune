@@ -129,6 +129,9 @@ async function addAudioFeatures(tracks) {
       const tracksWithFeatures = tracks.items.map((track, index) => {
         const trackWithFeatures = track.track;
         trackWithFeatures.audio_features = res.audio_features[index];
+        delete trackWithFeatures.available_markets
+        delete trackWithFeatures.album.available_markets
+        delete trackWithFeatures.album.artists
         return trackWithFeatures;
       });
       return tracksWithFeatures

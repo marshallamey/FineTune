@@ -6,6 +6,7 @@ import {
     Container, Row, Col, Form, FormGroup, FormText,
     Label, Input, Button, ButtonGroup,
 } from "reactstrap";
+import Knob from 'react-canvas-knob';
 import SpotifyWebApi from "spotify-web-api-js";
 import { ToastContainer } from "react-toastify";
 import AttrSlider from "../components/AttrSlider";
@@ -28,7 +29,10 @@ class FineTune extends Component {
         this.state = { 
           searchType: "advanced",
           playlists: [],
-          tracks: []
+          tracks: [],
+          value1: 0,
+          value2: 0,
+          value3: 0
         };
     }
 
@@ -46,6 +50,9 @@ class FineTune extends Component {
           .then(lists => getTracks(spotifyTokens.access_token, lists))
     }
 
+    handleChange = (newValue, num) => {
+      this.setState({['value'+num]: newValue});
+    };
 
     render() {
       const { playlists, songs } = this.props;
@@ -77,6 +84,50 @@ class FineTune extends Component {
           </Container>
       );
 
+
+
+      const controls = (
+        <div>
+          <Knob 
+            value={this.state.value1} 
+            onChange={(e) => this.handleChange(e, 1)}
+            bgColor="black"
+            fgColor="#1756fe"
+          />
+          <Knob value={this.state.value2} onChange={(e) => this.handleChange(e, 2)}/>
+          <Knob value={this.state.value3} onChange={(e) => this.handleChange(e, 3)}/>
+          <Knob value={this.state.value3} onChange={(e) => this.handleChange(e, 3)}/>
+          <AttrSlider
+            name="duration"
+            id="dur"
+            min={60000}
+            max={1800000}
+            step={5000}
+      />
+      <AttrSlider
+        name="signature"
+        id="sig"
+        min={1}
+        max={13}
+        step={1}
+    />
+    <AttrSlider
+        name="key"
+        id="key"
+        min={0}
+        max={11}
+        step={1}
+    />
+    <AttrSlider
+      name="speechiness"
+      id="sp"
+      min={0.0}
+      max={1.0}
+      step={0.01}
+  />
+        </div>
+      )
+
   
 
 
@@ -86,7 +137,7 @@ class FineTune extends Component {
                 <ToastContainer />
 
                 {/* FORM TITLE */}
-                <h1 className="music-search-title">Your Songs</h1>
+                <h1 className="music-search-title">Found {songs.length} Songs</h1>
 
                 {/* SEARCH TYPE BUTTONS */}
                 <ButtonGroup className="search-type-buttons">
@@ -107,7 +158,12 @@ class FineTune extends Component {
                 {/* CONTENT GOES HERE */}
                 <Row>
                   <Col>
-                    {playlistList}
+                    <Row>
+                      {playlistList}
+                      </Row>
+                      <Row>
+                        {controls}
+                      </Row>
                   </Col>
                   <Col>
                     {tracksList}
