@@ -118,7 +118,7 @@ export const getPlaylists = accessToken => async (dispatch) => {
     })
     .then(() => plist)
     .catch(err => console.log('getPlaylists()::', err))
-  dispatch({ type: 'GET_PLAYLISTS', payload: allPlaylists });
+  dispatch({ type: 'GET_PLAYLISTS', payload: allPlaylists || [] });
   return allPlaylists
 }
 
@@ -220,3 +220,80 @@ export const refreshTokens = spotifyTokens => async (dispatch) => {
   console.log('FINETUNEAPP(actions.refreshTokens):: New Spotify Tokens ==> ', newSpotifyTokens);
   dispatch({ type: 'REFRESH_TOKENS', payload: newSpotifyTokens });
 };
+
+const filters = {
+  tempo: {
+    min_tempo: 40,
+    max_tempo: 300,
+  },
+  popularity: {
+    min_popularity: 0,
+    max_popularity: 100,
+  },
+  duration: {
+    min_duration: 60000,
+    max_duration: 1800000,
+  },
+  acoustic: {
+    min_acousticness: 0.0,
+    max_acousticness: 1.0,
+  },
+  valence: {
+    min_valence: 0.0,
+    max_valence: 1.0,
+  },
+  words: {
+    min_speechiness: 0.0,
+    max_speechiness: 1.0,
+    min_instrumentalness: 0.0,
+    max_instrumentalness: 1.0,
+  },
+  energy: {
+    min_energy: 0.0,
+    max_energy: 1.0,
+    min_danceability: 0.0,
+    max_danceability: 1.0,
+  },
+  key: {
+    target_key: 0,
+    target_mode: 1,
+  },
+}
+
+function filterByAudioFeatures(songs, filters) {
+  songs.filter(song => { 
+    return filters.hasOwnProperty('words') ? wordFilter(song.audio_features) : true 
+    && filters.hasOwnProperty('key') ? keyFilter(song.audio_features) : true
+    && filters.hasOwnProperty('energy') ? energyFilter(song.audio_features) : true
+    && filters.hasOwnProperty('popularity') ? mainFilter(song, 'popularity') : true
+    && filters.hasOwnProperty('tempo') ? mainFilter(song.audio_features, 'tempo') : true
+    && filters.hasOwnProperty('mood') ? mainFilter(song.audio_features, 'valence') : true
+    && filters.hasOwnProperty('duration') ? mainFilter(song.audio_features, 'duration') : true
+    && filters.hasOwnProperty('acoustic') ? mainFilter(song.audio_features, 'acoustic') : true
+  })
+
+  function mainFilter(song, feature) {
+    return song[feature] >= filters[feature].min_popularity 
+    && song[feature] <= filters[feature].max_popularity
+  }
+  function wordFilter(song) {
+    return song.speechiness   >= filters.words.min_speechiness 
+    && song.speechiness       <= filters.words.min_speechiness
+    && song.instrumentalness  >= filters.words.min__instrumentalness 
+    && song.instrumentalness  <= filters.words.max__instrumentalness
+  }
+  function energyFilter(song) {
+    return song.energy   >= filters.energy.min_energy 
+    && song.energy       <= filters.energy.max_energy
+    && song.danceability >= filters.energy.min_danceability
+    && song.danceability <= filters.energy.max_danceability
+  }
+  function keyFilter(song) {
+    return song.key === filters.key.target_key 
+    && song.mode <= filters.key.target_mode
+  }
+}
+
+function filterByPlaylists (songs, playlistIds) {
+  return songs.filter(song => playlistIds.includes(song.playlist_id))
+}
