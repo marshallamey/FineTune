@@ -9,7 +9,7 @@ import App from "./components/App";
 import reducers from "./reducers";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
-
+import data from './js/data.json'
 
 const createStoreWithMiddleware = applyMiddleware(
     save({ ignoreStates: ["songs"] }),
@@ -24,7 +24,7 @@ ReactDOM.render(
         <Provider
             store={createStoreWithMiddleware(
                 reducers,
-                load(),
+                data,
                 window.__REDUX_DEVTOOLS_EXTENSION__ &&
                     window.__REDUX_DEVTOOLS_EXTENSION__()
             )} >

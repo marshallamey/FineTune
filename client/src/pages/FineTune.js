@@ -1,112 +1,78 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Container, Row, Col, Button, ButtonGroup } from "reactstrap";
-import SpotifyWebApi from "spotify-web-api-js";
-import { ToastContainer } from "react-toastify";
-import { onGenreChange, handleSubmit, submitSongSearch } from "../js/Helpers";
-import * as actions from "../actions";
-import PlaylistList from "../components/FineTune/PlaylistList";
-import TrackList from "../components/FineTune/TrackList";
-import FilterControls from "../components/FineTune/FilterControls";
-import "react-toastify/dist/ReactToastify.css";
-import "react-notifications/lib/notifications.css";
-import "rc-slider/assets/index.css";
-import "../css/FineTune.css";
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Container, Row, Col, Button, ButtonGroup } from 'reactstrap'
+import SpotifyWebApi from 'spotify-web-api-js'
+import { ToastContainer } from 'react-toastify'
+import { onGenreChange, handleSubmit, submitSongSearch } from '../js/Helpers'
+import * as actions from '../actions'
+import PlaylistList from '../components/FineTune/PlaylistList'
+import TrackList from '../components/FineTune/TrackList'
+import FilterControls from '../components/FineTune/FilterControls'
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-notifications/lib/notifications.css'
+import 'rc-slider/assets/index.css'
+import '../css/FineTune.css'
 
-const spotifyApi = new SpotifyWebApi();
+const spotifyApi = new SpotifyWebApi()
 
-class FineTune extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchType: "advanced",
-      playlists: [],
-      tracks: [],
-      value1: 0,
-      value2: 0,
-      value3: 0
-    };
-  }
+const FineTune = props => {
+  const { spotifyTokens, getTracks, getPlaylists, playlists, songs } = props
+  const [page, setPage] = useState('playlists')
+  const [filteredTracks, setTracks] = useState(songs)
+  const [playlistIds, setPlaylistIds] = useState([])
+  console.log('MOUNTED PROPS', playlists, filteredTracks)
 
-  // display list of playlist as options
-  // user filters which playlists to select songs from
-  // create song list
-  // filter song list with fineTune controls
+  !spotifyApi.getAccessToken() && spotifyApi.setAccessToken(spotifyTokens.access_token)
+  // if (!playlists.length || !songs.length)
+  //   getPlaylists(spotifyTokens.access_token)
+  //     .then(lists => getTracks(spotifyTokens.access_token, lists))
 
-  componentDidMount() {
-    // Make sure Spotify API has access token
-    const {
-      spotifyTokens,
-      getTracks,
-      getPlaylists,
-      playlists,
-      songs
-    } = this.props;
-    !spotifyApi.getAccessToken() &&
-      spotifyApi.setAccessToken(spotifyTokens.access_token);
-    if (!playlists.length || !songs.length)
-      getPlaylists(spotifyTokens.access_token).then(lists =>
-        getTracks(spotifyTokens.access_token, lists)
-      );
-  }
+  return (
+    <Container id='finetune' fluid>
+      <ToastContainer />
+      <h1 className='finetune__title'>Found {songs.length} Songs</h1>
+      <ButtonGroup className='finetune-buttons'>
+        <Button
+          className='finetune__buttons--playlists'
+          color={page === 'playlists' ? 'danger' : 'secondary'}
+          onClick={() => setPage('playlists')}>
+          Load Playlists
+        </Button>
+        <Button
+          className='finetune__buttons--search'
+          color={page === 'search' ? 'danger' : 'secondary'}
+          onClick={() => setPage('search')}>
+          Search Music
+        </Button>
+      </ButtonGroup>
 
-  render() {
-    const { playlists, songs } = this.props;
-
-    return (
-      <Container className="music-search-form" fluid>
-        {/* NOTIFICATIONS */}
-        <ToastContainer />
-
-        {/* FORM TITLE */}
-        <h1 className="music-search-title">Found {songs.length} Songs</h1>
-
-        {/* SEARCH TYPE BUTTONS */}
-        <ButtonGroup className="search-type-buttons">
-          <Button
-            className="search-type-button-basic"
-            color={this.state.searchType === "basic" ? "danger" : "secondary"}
-            onClick={() => console.log(this.state)}
-          >
-            Basic
-          </Button>
-          <Button
-            className="search-type-button-advanced"
-            color={this.state.searchType === "basic" ? "secondary" : "danger"}
-            onClick={() => this.setState({ searchType: "advanced" })}
-          >
-            Advanced
-          </Button>
-        </ButtonGroup>
-
-        {/* CONTENT GOES HERE */}
-        <Row>
-          <Col>
-            <Row>
-              <PlaylistList playlists={playlists} />
-            </Row>
-            <Row>
-              <FilterControls />
-            </Row>
-          </Col>
-          <Col>
-            <Row>
-              <TrackList songs={songs} />
-            </Row>
-            <Row></Row>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+      {/* CONTENT GOES HERE */}
+      <Row className='finetune__content'>
+        <Col className='finetune__content--col'>
+          <Row className='finetune__content--playlists'>
+            <PlaylistList playlists={playlists} />
+          </Row>
+          <Row className='finetune__content--controls'>
+            <FilterControls />
+          </Row>
+        </Col>
+        <Col className='finetune__content--col'>
+          <Row className='finetune__content--tracks'>
+            <TrackList tracks={filteredTracks} />
+          </Row>
+          <Row className='finetune__content--data'></Row>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
 FineTune.propTypes = {
   spotifyTokens: PropTypes.shape({
     access_token: PropTypes.string,
-    refresh_token: PropTypes.string
+    refresh_token: PropTypes.string,
   }).isRequired,
   allGenres: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   selectedGenres: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -117,8 +83,8 @@ FineTune.propTypes = {
   getPlaylists: PropTypes.func.isRequired,
   setRedirect: PropTypes.func.isRequired,
   setKeyword: PropTypes.func.isRequired,
-  history: PropTypes.shape({}).isRequired
-};
+  history: PropTypes.shape({}).isRequired,
+}
 
 const mapStateToProps = state => ({
   spotifyTokens: state.spotifyTokens,
@@ -137,7 +103,7 @@ const mapStateToProps = state => ({
   changeAttributes: state.changeAttributes,
   popovers: state.popovers,
   redirect: state.redirect,
-  keyword: state.keyword
-});
+  keyword: state.keyword,
+})
 
-export default withRouter(connect(mapStateToProps, actions)(FineTune));
+export default withRouter(connect(mapStateToProps, actions)(FineTune))

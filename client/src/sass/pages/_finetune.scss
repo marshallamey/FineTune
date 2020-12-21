@@ -1,0 +1,91 @@
+
+#finetune {
+  .finetune {
+
+    &__title {
+    font-size: 0.9rem;
+  }
+  
+    &__title:hover {
+      color: blue;
+    }
+
+    &__content{
+      border: 2px solid black;
+      
+      &--col { border: 2px solid blue;}
+      
+      &--controls {
+        height: 50vh;
+        overflow-y: scroll;
+        border: 2px solid white; 
+      }
+      &--tracks {
+        height: 50vh;
+        overflow-y: scroll;
+        border: 2px solid white;
+      }
+      &--data {
+        height: 50vh;
+        overflow-y: scroll;
+        border: 2px solid white;
+      }
+
+    }
+  }
+
+  .playlists-list {
+    height: 50vh;
+    overflow-y: scroll;
+    border: 2px solid white; 
+    padding: 3px;
+    text-align: left;
+    font-size: 2rem;
+
+    &__item {
+      margin: 3px;
+      background-color: #111;
+
+      div[class^="playlists-list__item"] {
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      &--img {
+        height: 50px;
+        width: 50px;
+        border: 2px solid white;
+        margin: 5px auto;
+      }
+
+      &--name {
+        margin-left: 10px;
+      }
+
+      &--total {
+        font-size: 1.5rem;
+        color: gray;
+      }
+
+      &--select {
+        position: relative;
+        max-width: 40px;
+        
+      }
+
+      &--checkbox {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 40px;
+        width: 40px;
+        border: 2px solid white;
+        border-radius: 1rem;
+      }
+      
+    }
+
+    
+  }
+}

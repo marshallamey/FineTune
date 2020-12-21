@@ -1,7 +1,7 @@
 node_modules
 build
 .prettierrc
-
+src/js/data.json
 
 
 1
