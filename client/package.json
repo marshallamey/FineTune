@@ -19,6 +19,7 @@
     "react-d3-basic": "^1.6.11",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.1.0",
     "react-notifications": "^1.6.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

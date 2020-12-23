@@ -12,7 +12,7 @@
 
     &__content{
       border: 2px solid black;
-      
+      & .row {margin-bottom: 0;}
       &--col { border: 2px solid blue;}
       
       &--controls {
@@ -82,10 +82,66 @@
         width: 40px;
         border: 2px solid white;
         border-radius: 1rem;
+        z-index: 1;
+      }
+
+      &--checkbox:hover {
+        cursor: pointer;
+        background-color: rgba(240, 240, 255, 0.5);
+      }
+
+      &--check {
+        position: absolute;
+        left: 3px;
+        height: 35px;
+        width: 35px;
+      }
+      
+      &--check:hover {
+        cursor: pointer;
       }
       
     }
 
     
+  }
+
+  .tracklist {
+    padding: 5px;
+    text-align: left;
+
+    &__track {
+      margin: 0;
+      margin-bottom: 3px;
+      padding: 5px 5px 5px 10px;
+      background-color: #111;
+      font-size: 1.4rem;
+      
+      & > div[class*="col-"] {
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      &-album {
+        padding: 0;
+     
+        &-img {
+          height: 40px;
+          width: 40px;
+          padding: 0;
+          margin: 0;
+          border: 1px solid white;
+        }
+      }
+
+      &-buttons {
+        color: pink;
+        &-div {
+          margin: 0;
+        }
+      }
+
+    }
   }
 }

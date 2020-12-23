@@ -24,6 +24,8 @@ const FineTune = props => {
   const [playlistIds, setPlaylistIds] = useState([])
   console.log('MOUNTED PROPS', playlists, filteredTracks)
 
+  const IDS = playlists.map(list => list.id)
+  !playlistIds.length && setPlaylistIds(IDS)
   !spotifyApi.getAccessToken() && spotifyApi.setAccessToken(spotifyTokens.access_token)
   // if (!playlists.length || !songs.length)
   //   getPlaylists(spotifyTokens.access_token)
@@ -52,7 +54,10 @@ const FineTune = props => {
       <Row className='finetune__content'>
         <Col className='finetune__content--col'>
           <Row className='finetune__content--playlists'>
-            <PlaylistList playlists={playlists} />
+            <PlaylistList 
+              playlists={playlists} 
+              playlistIds={playlistIds}
+              setPlaylistIds={setPlaylistIds} />
           </Row>
           <Row className='finetune__content--controls'>
             <FilterControls />

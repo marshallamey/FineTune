@@ -404,6 +404,8 @@ select.form-control.genre-select {
 
 #finetune .finetune__content {
   border: 2px solid black; }
+  #finetune .finetune__content .row {
+    margin-bottom: 0; }
   #finetune .finetune__content--col {
     border: 2px solid blue; }
   #finetune .finetune__content--controls {
@@ -453,7 +455,44 @@ select.form-control.genre-select {
       height: 40px;
       width: 40px;
       border: 2px solid white;
-      border-radius: 1rem; }
+      border-radius: 1rem;
+      z-index: 1; }
+    #finetune .playlists-list__item--checkbox:hover {
+      cursor: pointer;
+      background-color: rgba(240, 240, 255, 0.5); }
+    #finetune .playlists-list__item--check {
+      position: absolute;
+      left: 3px;
+      height: 35px;
+      width: 35px; }
+    #finetune .playlists-list__item--check:hover {
+      cursor: pointer; }
+
+#finetune .tracklist {
+  padding: 5px;
+  text-align: left; }
+  #finetune .tracklist__track {
+    margin: 0;
+    margin-bottom: 3px;
+    padding: 5px 5px 5px 10px;
+    background-color: #111;
+    font-size: 1.4rem; }
+    #finetune .tracklist__track > div[class*="col-"] {
+      padding: 0;
+      display: flex;
+      align-items: center; }
+    #finetune .tracklist__track-album {
+      padding: 0; }
+      #finetune .tracklist__track-album-img {
+        height: 40px;
+        width: 40px;
+        padding: 0;
+        margin: 0;
+        border: 1px solid white; }
+    #finetune .tracklist__track-buttons {
+      color: pink; }
+      #finetune .tracklist__track-buttons-div {
+        margin: 0; }
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
