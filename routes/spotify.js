@@ -7,6 +7,13 @@ const AWS = require('aws-sdk');
 
 /* GET ENVIRONMENT VARIABLES */
 AWS.config.region = 'us-west-2';
+AWS.config.getCredentials(function(err) {
+    if (err) console.log(err.stack);
+    // credentials not loaded
+    else {
+      console.log("Access key:", AWS.config.credentials.accessKeyId);
+    }
+  });
 const ssm = new AWS.SSM();
 const vars = {
     SPOTIFY_CLIENT_ID: '',

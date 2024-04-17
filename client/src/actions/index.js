@@ -2,58 +2,40 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import {AuthServerURL} from '../js/Helpers.js';
 
-
 const spotifyApi = new SpotifyWebApi();
-
-export const selectGenre = genres => ({
-  type: 'SELECT_GENRE',
-  payload: genres,
-});
-
-export const addSongs = songs => ({
-  type: 'ADD_SONGS',
-  payload: songs,
-});
-
-export const setRedirect = redirect => ({
-  type: 'SET_REDIRECT',
-  payload: redirect,
-});
-
-export const setKeyword = keyword => ({
-  type: 'SET_KEYWORD',
-  payload: keyword,
-});
-
-export const setPlaylistName = name => ({
-    type: 'SET_PLAYLIST_NAME',
-    payload: name,
-  });
-
-export const changeAttributes = attributes => ({
-  type: 'CHANGE_ATTRIBUTES',
-  payload: attributes,
-});
-
-export const resetAttributes = () => ({
-  type: 'RESET_ATTRIBUTES',
-});
-
-export const togglePopover = popovers => ({
-  type: 'TOGGLE_POPOVER',
-  payload: popovers,
-});
 
 export const getTokens = tokens => ({
   type: 'GET_TOKENS',
   payload: tokens,
 });
 
-export const deleteSong = (songs, index) => async (dispatch) => {
-    console.log(" DELETING ==> ", index);
-    let newSongs = [...songs];
-    newSongs.splice(index, 1);
-    dispatch({type: 'DELETE_SONG', payload: newSongs });
+export const refreshTokens = spotifyTokens => async (dispatch) => {
+  console.log('FINETUNEAPP(actions.refreshTokens)::  Attempting to refresh access token...');
+  console.log('FINETUNEAPP(actions.refreshTokens):: Old Access Token ==> ', spotifyTokens.access_token);
+  console.log('FINETUNEAPP(actions.refreshTokens):: Refresh Token ==> ', spotifyTokens.refresh_token);
+  const newSpotifyTokens = await axios({
+    method: 'GET',
+    url: `${AuthServerURL}/spotify/refresh_token`,
+    params: { refresh_token: spotifyTokens.refresh_token },
+  })
+    .then((res) => {
+        console.log("SUCCESS!! =>", res.data.access_token);
+      const response = {
+        access_token: res.data.access_token,
+        refresh_token: spotifyTokens.refresh_token,
+      };
+      return response;
+    })
+    .catch((err) => {
+        console.log("ERROR!! =>", err)
+      const response = {
+        access_token: spotifyTokens.access_token,
+        refresh_token: spotifyTokens.refresh_token,
+      };
+      return response;
+    });
+  console.log('FINETUNEAPP(actions.refreshTokens):: New Spotify Tokens ==> ', newSpotifyTokens);
+  dispatch({ type: 'REFRESH_TOKENS', payload: newSpotifyTokens });
 };
 
 export const getExpireTime = expireTime => async (dispatch) => {
@@ -67,22 +49,6 @@ export const getUser = accessToken => async (dispatch) => {
   // console.log('FINETUNEAPP(actions.getUser):: Fetching User ==> ', user);
   dispatch({ type: 'GET_USER', payload: user });
 };
-
-export const getGenres = accessToken => async (dispatch) => {
-  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
-  spotifyApi.setAccessToken(accessToken);
-  const allGenres = await spotifyApi.getAvailableGenreSeeds()
-    .then((genres) => {
-      const g = genres.genres.map((genre, index) => ({
-        name: capitalize(genre),
-        id: index,
-      }));
-      return g;
-    });
-  // console.log('FINETUNEAPP(actions.getGenres):: Fetching Available genres ==> ', allGenres);
-  dispatch({ type: 'GET_GENRES', payload: allGenres });
-};
-
 
 export const getDevices = accessToken => async (dispatch) => {
   spotifyApi.setAccessToken(accessToken);
@@ -103,6 +69,27 @@ export const getDevices = accessToken => async (dispatch) => {
   dispatch({ type: 'GET_DEVICES', payload: allDevices });
 };
 
+export const getGenres = accessToken => async (dispatch) => {
+  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+  spotifyApi.setAccessToken(accessToken);
+  const allGenres = await spotifyApi.getAvailableGenreSeeds()
+    .then((genres) => {
+      const g = genres.genres.map((genre, index) => ({
+        name: capitalize(genre),
+        id: index,
+      }));
+      return g;
+    });
+  // console.log('FINETUNEAPP(actions.getGenres):: Fetching Available genres ==> ', allGenres);
+  dispatch({ type: 'GET_GENRES', payload: allGenres });
+};
+
+export const selectGenre = genres => ({
+  type: 'SELECT_GENRE',
+  payload: genres,
+});
+
+
 // get all playlists
 export const getPlaylists = accessToken => async (dispatch) => {
   spotifyApi.setAccessToken(accessToken);
@@ -122,22 +109,7 @@ export const getPlaylists = accessToken => async (dispatch) => {
   return allPlaylists
 }
 
-async function addAudioFeatures(tracks) {
-  const trackIds = tracks.items.map(x => x.track.id);
-  const allTracksWithFeatures = await spotifyApi.getAudioFeaturesForTracks(trackIds)
-    .then(res => {
-      const tracksWithFeatures = tracks.items.map((track, index) => {
-        const trackWithFeatures = track.track;
-        trackWithFeatures.audio_features = res.audio_features[index];
-        delete trackWithFeatures.available_markets
-        delete trackWithFeatures.album.available_markets
-        delete trackWithFeatures.album.artists
-        return trackWithFeatures;
-      });
-      return tracksWithFeatures
-    })
-    return allTracksWithFeatures
-}
+
 
     // Input: Array of Spotify playlists
     // Output: Array of Spotify tracks from all the playlists + any saved tracks
@@ -182,6 +154,22 @@ async function getSavedTracks() {
     return allSavedTracks 
   }
 
+async function addAudioFeatures(tracks) {
+    const trackIds = tracks.items.map(x => x.track.id);
+    const allTracksWithFeatures = await spotifyApi.getAudioFeaturesForTracks(trackIds)
+      .then(res => {
+        const tracksWithFeatures = tracks.items.map((track, index) => {
+          const trackWithFeatures = track.track;
+          trackWithFeatures.audio_features = res.audio_features[index];
+          delete trackWithFeatures.available_markets
+          delete trackWithFeatures.album.available_markets
+          delete trackWithFeatures.album.artists
+          return trackWithFeatures;
+        });
+        return tracksWithFeatures
+      })
+      return allTracksWithFeatures
+  }
 export const getTracks = (accessToken, playlists) => async (dispatch) => {
   let p = await getPlaylists(accessToken)
   let tracks = await getPlaylistTracks(playlists)
@@ -192,36 +180,24 @@ export const getTracks = (accessToken, playlists) => async (dispatch) => {
   return allSongs
 }
 
-export const refreshTokens = spotifyTokens => async (dispatch) => {
-  console.log('FINETUNEAPP(actions.refreshTokens)::  Attempting to refresh access token...');
-  console.log('FINETUNEAPP(actions.refreshTokens):: Old Access Token ==> ', spotifyTokens.access_token);
-  console.log('FINETUNEAPP(actions.refreshTokens):: Refresh Token ==> ', spotifyTokens.refresh_token);
-  const newSpotifyTokens = await axios({
-    method: 'GET',
-    url: `${AuthServerURL}/spotify/refresh_token`,
-    params: { refresh_token: spotifyTokens.refresh_token },
-  })
-    .then((res) => {
-        console.log("SUCCESS!! =>", res.data.access_token);
-      const response = {
-        access_token: res.data.access_token,
-        refresh_token: spotifyTokens.refresh_token,
-      };
-      return response;
-    })
-    .catch((err) => {
-        console.log("ERROR!! =>", err)
-      const response = {
-        access_token: spotifyTokens.access_token,
-        refresh_token: spotifyTokens.refresh_token,
-      };
-      return response;
-    });
-  console.log('FINETUNEAPP(actions.refreshTokens):: New Spotify Tokens ==> ', newSpotifyTokens);
-  dispatch({ type: 'REFRESH_TOKENS', payload: newSpotifyTokens });
+export const addSongs = songs => ({
+  type: 'ADD_SONGS',
+  payload: songs,
+});
+
+export const deleteSong = (songs, index) => async (dispatch) => {
+  console.log(" DELETING ==> ", index);
+  let newSongs = [...songs];
+  newSongs.splice(index, 1);
+  dispatch({type: 'DELETE_SONG', payload: newSongs });
 };
 
-const filters = {
+
+
+
+
+const filters= {
+  playlistIds: [],
   tempo: {
     min_tempo: 40,
     max_tempo: 300,
@@ -260,9 +236,10 @@ const filters = {
   },
 }
 
-function filterByAudioFeatures(songs, filters) {
+function filterTracks(songs, filters) {
   songs.filter(song => { 
-    return filters.hasOwnProperty('words') ? wordFilter(song.audio_features) : true 
+    return filters.playlistIds.includes(song.playlist_id)
+    && filters.hasOwnProperty('words') ? wordFilter(song.audio_features) : true 
     && filters.hasOwnProperty('key') ? keyFilter(song.audio_features) : true
     && filters.hasOwnProperty('energy') ? energyFilter(song.audio_features) : true
     && filters.hasOwnProperty('popularity') ? mainFilter(song, 'popularity') : true
@@ -294,6 +271,31 @@ function filterByAudioFeatures(songs, filters) {
   }
 }
 
-function filterByPlaylists (songs, playlistIds) {
-  return songs.filter(song => playlistIds.includes(song.playlist_id))
-}
+export const changeAttributes = attributes => ({
+  type: 'CHANGE_ATTRIBUTES',
+  payload: attributes,
+});
+
+export const resetAttributes = () => ({
+  type: 'RESET_ATTRIBUTES',
+});
+
+export const setRedirect = redirect => ({
+  type: 'SET_REDIRECT',
+  payload: redirect,
+});
+
+export const setKeyword = keyword => ({
+  type: 'SET_KEYWORD',
+  payload: keyword,
+});
+
+export const setPlaylistName = name => ({
+    type: 'SET_PLAYLIST_NAME',
+    payload: name,
+  });
+
+export const togglePopover = popovers => ({
+  type: 'TOGGLE_POPOVER',
+  payload: popovers,
+});

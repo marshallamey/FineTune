@@ -27,9 +27,9 @@ const FineTune = props => {
   const IDS = playlists.map(list => list.id)
   !playlistIds.length && setPlaylistIds(IDS)
   !spotifyApi.getAccessToken() && spotifyApi.setAccessToken(spotifyTokens.access_token)
-  // if (!playlists.length || !songs.length)
-  //   getPlaylists(spotifyTokens.access_token)
-  //     .then(lists => getTracks(spotifyTokens.access_token, lists))
+  if (!playlists.length || !songs.length)
+    getPlaylists(spotifyTokens.access_token)
+      .then(lists => getTracks(spotifyTokens.access_token, lists))
 
   return (
     <Container id='finetune' fluid>

@@ -144,4 +144,26 @@
 
     }
   }
+
+  .filter-controls {
+    
+    &__switches.row {
+      margin: 20px;
+    }
+
+    &__switch--label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    &__switch .react-switch-bg div:first-child  {
+      position:absolute;
+      left: 8px
+    }
+
+    &__switch .react-switch-bg div:last-child {
+      position: absolute !important;
+      right: -6px !important;
+    }
+  }
 }

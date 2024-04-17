@@ -30,7 +30,7 @@ const PlaylistList = props => {
   const Playlists = playlists.map(playlist => (
     <Row className='playlists-list__item' key={playlist.id}>
       <Col className='playlists-list__item--image' sm='1' md='1' lg='1'>
-        <img className= 'playlists-list__item--img' src={playlist.images[0].url} />
+        <img className= 'playlists-list__item--img' src={playlist.images.length == 0? '' : playlist.images[0].url } />
       </Col>
       <Col className='playlists-list__item--name' sm='7' md='7' lg='7'>
         {playlist.name}
